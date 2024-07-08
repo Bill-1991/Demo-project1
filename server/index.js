@@ -12,7 +12,7 @@ import Preview from './models/preview.js';
 //import { MongoClient, ServerApiVersion } from 'mongodb';
 import mongoose from 'mongoose';
 
-const uri = "mongodb+srv://qr-code-db:YzjoCc_321@cluster0.3sde4uk.mongodb.net/urls?retryWrites=true&w=majority&appName=cluster0";
+const uri = import.meta.env.URI;
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => console.log("connected"))
     .catch(err => console.log(err));
