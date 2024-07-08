@@ -1,0 +1,53 @@
+.url {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    align-items: center;
+    background-color: rgba(120, 120, 120, 0.1);
+}
+
+.url p,
+.siteUrl p{
+    font-size: 16px;
+    font-weight: 700;
+    font-style: oblique;
+    color: rgba(0,212,255,1);
+}
+
+.siteUrl {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    justify-content: center;
+    align-self: center;
+}
+
+.url input,
+.siteUrl input {
+    border-radius: 2%;
+    border-color: black;
+    background-color: inherit;
+    border-width: 2px;
+    font-size: 14px;
+    font-weight: 700;
+    color: black;
+    height: 30px;
+    align-self: center;
+    border-radius: 10px;
+}
+
+.save {
+    position: relative;
+    top: 50px;
+    width: 100px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 19px;
+    border-radius: 8px;
+    border-width: 3px;
+    border-color: black;
+}
+
+@media only screen and (max-width: 450px) {
+    .siteUrl{
+        display: block !important
+    }
+}

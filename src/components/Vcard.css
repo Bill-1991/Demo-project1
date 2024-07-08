@@ -1,0 +1,126 @@
+.vcard {
+    background-color: rgba(120, 120, 120, 0.1);
+}
+
+.firstname,
+.lastname,
+.title,
+.birthday,
+.contactUrl,
+.notes,
+.photo,
+.tel,
+.vcardUrl,
+.email,
+.address,
+.vCardPrev {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  margin-top: 10px;
+}
+
+.firstname input,
+.lastname input,
+.title input,
+.birthday input,
+.contactUrl input,
+.notes input,
+.photo input,
+.tel input,
+.vcardUrl input,
+.email input,
+.address input,
+.vCardPrev input{
+  border-radius: 2%;
+  border-color: black;
+  background-color: inherit;
+  border-width: 2px;
+  font-size: 14px;
+  font-weight: 700;
+  color: black;
+  width: 90%;
+  height: 30px;
+  align-self: center;
+  border-radius: 10px;
+}
+
+.vCardPrev button{
+  width: 60spx;
+  justify-self: flex-start !important;
+}
+
+.photo input {
+  background-color: inherit !important;
+}
+
+::placeholder {
+  color: black;
+  opacity: 0.8; /* Firefox */
+}
+
+::-ms-input-placeholder { /* Edge 12 -18 */
+  color: black;
+}
+
+.firstname p,
+.lastname p,
+.title p,
+.birthday p,
+.contactUrl p,
+.notes p,
+.photo p,
+.tel p,
+.vcardUrl p,
+.email p,
+.address p,
+.vCardPrev p{
+  font-size: 16px;
+  font-weight: 700;
+  font-style: oblique;
+  color: black;
+  justify-self: center;
+}
+
+.save {
+  position: relative;
+  width: 100px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 19px;
+  border-radius: 8px;
+  border-width: 3px;
+  border-color: black;
+}
+
+
+
+@media only screen and (max-width: 450px) {
+  
+  .firstname,
+  .lastname,
+  .title,
+  .birthday,
+  .contactUrl,
+  .notes,
+  .photo,
+  .tel,
+  .vcardUrl,
+  .email,
+  .address {
+    display: block;
+  }
+
+  .firstname input,
+  .lastname input,
+  .title input,
+  .birthday input,
+  .contactUrl input,
+  .notes input,
+  .photo input,
+  .tel input,
+  .vcardUrl input,
+  .email input,
+  .address input {
+    height: 30px
+  }
+}

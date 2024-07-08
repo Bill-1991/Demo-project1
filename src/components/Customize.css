@@ -1,0 +1,177 @@
+  .options p{
+    background-color: rgba(120, 120, 120, 0.3);
+    color: black;
+    font-size: 15px;
+    font-weight: 700;
+  }
+  
+  .main {
+    display: grid;
+    gap: 10px;
+    background-color: rgba(120, 120, 120, 0.1);
+  }
+  
+  .main div {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    
+  }
+  
+  .main div p{
+    background-color: inherit;
+    font-size: 13px;
+  }
+  
+.main div input{
+    height: 2rem;
+    align-self: center;
+  }
+
+.dots,
+.squares,
+.cornersDots,
+.back,
+.imgOptions,
+.qrOptions {
+  background-color: rgba(120, 120, 120, 0.1) !important;
+}
+
+.dots div p,
+.squares div p,
+.cornersDots div p,
+.back div p,
+.imgOptions div p,
+.qrOptions div p {
+  font-size: 13px;
+  font-weight: 700;
+  background-color: inherit !important;
+}
+
+.dots-options,
+.squares-options,
+.cornersDots-options,
+.imgOptions div,
+.qrOptions div {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  justify-content: center;
+}
+
+.imgOptions div input,
+.qrOptions div input{
+  justify-self: flex-start !important;
+  height: 30px;
+  align-self: center;
+}
+
+.dots-options select,
+.squares-options select,
+.cornersDots-options select,
+.qrOptions div select {
+  height: 2rem;
+  align-self: center;
+}
+
+.dotsColorType,
+.squaresColorType,
+.cornersDotsColorType,
+.backColorType {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  text-align: center;
+}
+
+.colorTypeInputs {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.colorTypeInputs div {
+  display: flex;
+}
+
+.dots-color,
+.squares-color,
+.cornersDots-color,
+.back-color {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  align-items: center;
+}
+
+.dots-color input,
+.squares-color input,
+.cornersDots-color input,
+.back-color input {
+  justify-self: flex-start !important;
+}
+
+.dots-color input,
+.squares-color input,
+.cornersDots-color input,
+.back-color input {
+  justify-self: center;
+}
+
+.dotsGradient,
+.squaresGradient,
+.cornersDotsGradient,
+.backGradient {
+  display: grid;
+}
+
+.dotsGradient .dotsGradientType,
+.squaresGradient .squaresGradientType,
+.cornersDotsGradient .cornersDotsGradientType,
+.backGradient .backGradientType {
+  display: grid;
+  grid-template-columns: 30% 35% 35%;
+}
+
+.dotsGradient .dotsGradientType div,
+.squaresGradient .squaresGradientType div,
+.cornersDotsGradient .cornersDotsGradientType div,
+.backGradient .backGradientType div {
+  display: flex;
+}
+
+.dotsGradientColors,
+.squaresGradientColors,
+.cornersDotsGradientColors,
+.backGradientColors {
+  display: grid;
+  grid-template-columns: 30% 35% 35%;
+  min-width: 350px;
+}
+
+.dotsGradientColors div,
+.squaresGradientColors div,
+.cornersDotsGradientColors div,
+.backGradientColors div {
+  display: flex;
+  gap: 5px;
+}
+
+.dotsGradientColors input,
+.squaresGradientColors input,
+.cornersDotsGradientColors input, 
+.backGradientColors input {
+  align-self: center;
+}
+
+.dotsGradientRotation,
+.squaresGradientRotation,
+.cornersDotsGradientRotation, 
+.backGradientRotation {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.dotsGradientRotation input,
+.squaresGradientRotation input,
+.cornersDotsGradientRotation input,
+.backGradientRotation input {
+  height: 20px;
+  width: fit-content;
+  align-self: center;
+}

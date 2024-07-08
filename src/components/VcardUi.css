@@ -1,0 +1,94 @@
+.vcardUi {
+  display: block;
+  height: fit-content;
+  width:50vw;
+  margin-left: 25vw;
+  background-color: rgba(120, 120, 120, 0.3);
+  font-size: larger;
+  font: message-box;
+  font-weight: 900;
+}
+
+.vcardUi div{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.mainUi{
+  display: flex;
+  gap: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainUi .name{
+  font-size: 20px;
+}
+
+.mainUi img{
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+}
+
+.mainUi .name{
+  display: flex;
+  gap: 10px;
+}
+
+.downloadCard {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .downloadCard input {
+    justify-self: center;
+    width: 300px;
+    height: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    color: black;
+    background-color: inherit;
+    border-width: 3px;
+  
+  }
+  
+  .downloadCard button {
+    justify-self: flex-start;
+    background-color: white;
+    font-size: 14px;
+    border-width: 3px;
+    border-color: black;
+    color: black;
+    font-weight: 900;
+    margin-left: 5px;
+    box-shadow: 0 0 1em 0em;
+    height: 40px;
+  }
+  
+  .downloadCard button:hover {
+    border-color: rgb(233, 12, 12);
+    color: white;
+    background-color: black;
+  }
+
+
+  @media only screen and (max-width: 450px) {
+    
+  .downloadCard {
+    justify-self: center;
+    display: grid !important;
+  }
+
+  .downloadCard button {
+    justify-self: center;
+  }
+
+  .downloadCard input {
+    justify-self: center;
+    width: 100%;
+  }
+}

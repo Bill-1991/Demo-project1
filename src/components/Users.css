@@ -1,0 +1,35 @@
+.users {
+    display: block;
+}
+
+.users .sites .sitecard,
+.users .vcards .vcardscard {
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+}
+
+.users .sites h2,
+.users .vcards h2{
+    font-size: 23px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+.users .sites .sitecard p,
+.users .vcards .vcardscard p{
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.users .sites .sitecard button,
+.users .vcards .vcardscard button{
+    width: 50%;
+    background-color: white;
+    border-radius: 15px;
+    border-width: 3px;
+    border-color: black;
+    color: black;
+    font-size: 16px;
+    font-weight: 700;
+}

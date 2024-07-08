@@ -1,0 +1,241 @@
+/* eslint-disable react/prop-types */
+import { useState, useEffect } from "react";
+import Axios from "axios";
+import EditQr from "./EditQr";
+import './Users.css'
+
+
+const Users = () => {
+    const [loadingSites, setLoadingSites] = useState(true)
+    const [loadingVCards, setLoadingVCards] = useState(true)
+    const [sitesArr, setSitesArr] = useState([])
+    const [vCardsArr, setVCardsArr] = useState([])
+    const [edit, setEdit] = useState(false)
+    const [obj, setObj] = useState({})
+    const [curTable, setCurTable] = useState("")
+    const [urlForm, setUrlForm] = useState(null)
+    const [vCardForm, setVCardForm] = useState(null)
+    const [url, setUrl] = useState("");
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
+    const [title, setTitle] = useState("")
+    const [email, setEmail] = useState("")
+    const [contactUrl, setContactUrl] = useState("")
+    const [notes, setNotes] = useState("")
+    const [photo, setPhoto] = useState(null)
+    const [tel, setTel] = useState("")
+    const [rawAddress, setRawAddress] = useState("")
+
+    useEffect(() => {
+        fetch('http://localhost:3001/fetchedsites')
+        .then(res => res.json())
+        .then(data => {
+          setSitesArr(data)
+          setLoadingSites(false)
+        })
+    }, [])
+    
+    useEffect(() => {
+        fetch('http://localhost:3001/fetchedvcards')
+        .then(res => res.json())
+        .then(data => {
+          setVCardsArr(data)
+          setLoadingVCards(false)
+        })
+    }, [])
+
+
+    const onEdit = (id, table) => {
+        setEdit(true)
+        let object;
+        if (table === "urls") {
+            object = sitesArr.filter(name => name._id === id)[0]
+            setUrlForm(true)
+            setVCardForm(false)
+        } else {
+            object = vCardsArr.filter(name => name._id === id)[0]
+            setUrlForm(false)
+            setVCardForm(true)
+        }
+        setCurTable(table)
+        setObj(object)
+    }
+
+    const closeEdit = () => {
+        setEdit(false)
+    }
+
+    const selectUrlForm = () => {
+        setVCardForm(false)
+        setUrlForm(true)
+    }
+
+    const selectVCardForm = () => {
+        setVCardForm(true)
+        setUrlForm(false)
+    }
+
+    const onUrlChange = (event) => {
+        setUrl(event.target.value);
+    };
+
+    const selectImg = (e) => {
+        setPhoto(e.target.files[0])
+    }
+    
+      const firstNameChange = (e) => {
+        setFirstName(e.target.value)
+      }
+    
+      const lastNameChange = (e) => {
+        setLastName(e.target.value)
+      }
+    
+      const titleChange = (e) => {
+        setTitle(e.target.value)
+      }
+    
+      const emailChange = (e) => {
+        setEmail(e.target.value)
+      }
+    
+      const telChange = (e) => {
+        setTel(e.target.value)
+      }
+    
+      const contactUrlChange = (e) => {
+        setContactUrl(e.target.value)
+      }
+    
+      const notesChange = (e) => {
+        setNotes(e.target.value)
+      }
+    
+      const rawAddressChange = (e) => {
+        setRawAddress(e.target.value)
+      }
+    
+      const convToBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+          const fileReader = new FileReader();
+          fileReader.readAsDataURL(file);
+          
+          fileReader.onload = () => {
+            resolve(fileReader.result);
+          };
+    
+          fileReader.onerror = (error) => {
+            reject(error);
+          };
+        });
+      };
+
+    const onUrlUpdate = (curTable) => {
+      Axios.post(`http://localhost:3001/sitesupdate/`, {
+        obj: {
+          qrSvg: obj.qrSvg,
+          short: obj.short,
+          urlName: url,
+        },
+        curTable: curTable,
+      })
+      .then((res, err) => {
+        if (err) console.log(err);
+      })
+      window.location.reload()
+    }
+
+    const onVCardUpdate = async (curTable) => {
+      let convertedPhoto;
+      if (photo) {
+        convertedPhoto = await convToBase64(photo)
+        Axios.post('http://localhost:3001/vcardsupdate/', {
+          obj: {
+            qrSvg: obj.qrSvg,
+            short: obj.short,
+            firstName: firstName,
+            lastName: lastName,
+            title: title,
+            email: email,
+            address: rawAddress,
+            website: contactUrl,
+            phone: tel,
+            notes: notes,
+            photo: convertedPhoto
+          },
+          curTable: curTable
+        })
+        .then((res, err) => {
+          if (err) console.log(err);
+        })
+        console.log("ok")
+        window.location.reload()
+      }
+      else {
+        convertedPhoto = obj.photo
+        Axios.post('http://localhost:3001/vcardsupdate/', {
+          obj: {
+            qrSvg: obj.qrSvg,
+            short: obj.short,
+            firstName: !firstName ? obj.firstName : firstName,
+            lastName: !lastName ? obj.lastName : lastName,
+            title: !title ? obj.title : title,
+            email: !email ? obj.email : email,
+            address: !rawAddress ? obj.address : rawAddress,
+            website: !contactUrl ? obj.website : contactUrl,
+            phone: !tel ? obj.phone : tel,
+            notes: !notes ? obj.notes : notes,
+            photo: convertedPhoto
+          },
+          curTable: curTable
+        })
+        .then((res, err) => {
+          if (err) console.log(err);
+        })
+        console.log("ok too")
+        window.location.reload()
+      }
+    }
+
+    if (loadingSites || loadingVCards ) return <h1>Loading...</h1>
+    return (  
+        <div className="users">
+            {edit === true ? <EditQr obj={obj} edit={edit} curTable={curTable} closeEdit={closeEdit} selectUrlForm={selectUrlForm} 
+            selectVCardForm={selectVCardForm} urlForm={urlForm} vCardForm={vCardForm} url={url} onUrlChange={onUrlChange} firstName={firstName} 
+            firstNameChange={firstNameChange} lastName={lastName} lastNameChange={lastNameChange} title={title} titleChange={titleChange} 
+            email={email} emailChange={emailChange} contactUrl={contactUrl} contactUrlChange={contactUrlChange} rawAddress={rawAddress} 
+            rawAddressChange={rawAddressChange}  tel={tel} telChange={telChange} notes={notes} notesChange={notesChange} photo={photo}
+            selectImg={selectImg} onUrlUpdate={onUrlUpdate} onVCardUpdate={onVCardUpdate} /> : 
+            <>
+            <div className="sites">
+                <h2>Sites</h2>
+                <div className="sitecard">
+                    {
+                        sitesArr.map(site => <div key={site._id}>
+                            <img src={`data:image/svg+xml;utf8,${encodeURIComponent(site.qrSvg.replace(`<?xml version="1.0" standalone="no"?>`, ""))}`} />
+                            <p>{site.urlName}</p>
+                            <button onClick={() => onEdit(site._id, "urls")} >Edit Qr</button>
+                        </div>)
+                    }
+                </div>
+            </div>
+            <hr />
+            <div className="vcards">
+                <h2>V-Cards</h2>
+                <div className="vcardscard">
+                    {
+                        vCardsArr.map(vCard => <div key={vCard._id}>
+                            <img src={`data:image/svg+xml;utf8,${encodeURIComponent(vCard.qrSvg.replace(`<?xml version="1.0" standalone="no"?>`, ""))}`} />
+                            <p>{vCard.firstName + " " + vCard.lastName}</p>
+                            <button onClick={() => onEdit(vCard._id, "vcards")} >Edit Qr</button>
+                        </div>)
+                    }
+                </div>
+            </div>
+        </> 
+        }
+        </div>
+    )
+}
+
+export default Users;
