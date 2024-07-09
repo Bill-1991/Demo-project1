@@ -28,7 +28,7 @@ const Users = () => {
     
 
     useEffect(() => {
-        fetch('http://localhost:3001/fetchedsites')
+        fetch('https://dynamic-styled-qrcode-generator.onrender.com/fetchedsites')
         .then(res => res.json())
         .then(data => {
           setSitesArr(data)
@@ -37,7 +37,7 @@ const Users = () => {
     }, [])
     
     useEffect(() => {
-        fetch('http://localhost:3001/fetchedvcards')
+        fetch('https://dynamic-styled-qrcode-generator.onrender.com/fetchedvcards')
         .then(res => res.json())
         .then(data => {
           setVCardsArr(data)
@@ -150,7 +150,7 @@ const Users = () => {
       };
 
     const onUrlUpdate = (curTable) => {
-      Axios.post(`http://localhost:3001/sitesupdate/`, {
+      Axios.post(`https://dynamic-styled-qrcode-generator.onrender.com/sitesupdate/`, {
         obj: {
           qrSvg: obj.qrSvg,
           short: obj.short,
@@ -168,7 +168,7 @@ const Users = () => {
       let convertedPhoto;
       if (photo) {
         convertedPhoto = await convToBase64(photo)
-        Axios.post('http://localhost:3001/vcardsupdate/', {
+        Axios.post('https://dynamic-styled-qrcode-generator.onrender.com/vcardsupdate/', {
           obj: {
             qrSvg: obj.qrSvg,
             short: obj.short,
@@ -191,7 +191,7 @@ const Users = () => {
       }
       else {
         convertedPhoto = obj.photo
-        Axios.post('http://localhost:3001/vcardsupdate/', {
+        Axios.post('https://dynamic-styled-qrcode-generator.onrender.com/vcardsupdate/', {
           obj: {
             qrSvg: obj.qrSvg,
             short: obj.short,

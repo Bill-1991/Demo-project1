@@ -126,8 +126,8 @@ export default function App() {
   const [tel, setTel] = useState("")
   const [rawAddress, setRawAddress] = useState("")
   const [backRoute, setBackRoute] = useState("sites")
-  let siteUrl = `localhost:5173/${shortUrl}`
-  let vCardUrl = `localhost:5173/${shortUrl}`
+  let siteUrl = `https://dynamic-styled-qrcode-generator-1.onrender.com//${shortUrl}`
+  let vCardUrl = `https://dynamic-styled-qrcode-generator-1.onrender.com//${shortUrl}`
   const ref = useRef(null);
   
   //vcards?id=${vCardId}&preview=${preview}
@@ -579,7 +579,7 @@ export default function App() {
       let qrBlob = await qrText.then(value => value.text().then(value => value));
       
       if (backRoute === "sites") {
-        Axios.post(`http://localhost:3001/${backRoute}/`, {
+        Axios.post(`https://dynamic-styled-qrcode-generator.onrender.com/${backRoute}/`, {
           qrSvg: qrBlob,
           short: shortUrl,
           urlName: url
@@ -596,7 +596,7 @@ export default function App() {
       }
       
       if (backRoute === "vcards") {
-        Axios.post(`http://localhost:3001/${backRoute}/`, {
+        Axios.post(`https://dynamic-styled-qrcode-generator.onrender.com/${backRoute}/`, {
           qrSvg: qrBlob,
           short: shortUrl,
           firstName: firstName,
