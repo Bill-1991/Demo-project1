@@ -66,6 +66,7 @@ const qrCode = new QRCodeStyling({
 
 export default function App() {
   const urlParams = new URLSearchParams(window.location.search);
+  console.log(window.location.pathname)
   const userParam = urlParams.get('user');
   const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
     "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
@@ -126,7 +127,7 @@ export default function App() {
   const [tel, setTel] = useState("")
   const [rawAddress, setRawAddress] = useState("")
   const [backRoute, setBackRoute] = useState("sites")
-  let siteUrl = `https://dynamic-styled-qrcode-generator-1.onrender.com//${shortUrl}`
+  let siteUrl = `https://dynamic-styled-qrcode-generator-1.onrender.com/${shortUrl}`
   let vCardUrl = `https://dynamic-styled-qrcode-generator-1.onrender.com//${shortUrl}`
   const ref = useRef(null);
   
