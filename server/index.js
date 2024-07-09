@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
@@ -5,16 +6,21 @@ import bodyParser from 'body-parser';
 //import getData from './functions/getData.js';
 //import getIds from './functions/getIds.js';
 //import deleteRow from './functions/deleteRow.js';
-import { IP2Location } from 'ip2location-nodejs';
+//import { IP2Location } from 'ip2location-nodejs';
 import Url from './models/url.js';
 import VCard from './models/vcard.js';
 import Preview from './models/preview.js';
 //import { MongoClient, ServerApiVersion } from 'mongodb';
 import mongoose from 'mongoose';
 
-const uri = import.meta.env.URI;
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(result => console.log("connected"))
+dotenv.config({ path: '../.env' });
+
+
+const uri = process.env.MONGO_URI
+
+
+mongoose.connect(uri)
+    .then(() => console.log("connected"))
     .catch(err => console.log(err));
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -69,6 +75,7 @@ app.post('/sites', (req, res) => {
 })
 
 app.post('/vcards', (req, res) => {
+    console.log(req.body)
     const vcard = new VCard(
         req.body
     );
@@ -99,12 +106,12 @@ app.post('/previews', (req, res) => {
 
 app.post('/medium', (req, res) => {
     res.json(req.body);
-    const ip = '62.74.186.0';
-    let ip2location = new IP2Location();
-    ip2location.open("../../../downloads/IP2LOCATION-LITE-DB1.IPV6.BIN/IP2LOCATION-LITE-DB1.IPV6.BIN");
-    let result = ip2location.getAll(ip).countryLong;
-    ip2location.close();
-    const urls = Url.find({ name: req.body.name }).select('_id')
+    //const ip = '62.74.186.0';
+    //let ip2location = new IP2Location();
+    //ip2location.open("../../../downloads/IP2LOCATION-LITE-DB1.IPV6.BIN/IP2LOCATION-LITE-DB1.IPV6.BIN");
+    //let result = ip2location.getAll(ip).countryLong;
+    //ip2location.close();
+    //const urls = Url.find({ name: req.body.name }).select('_id')
     //const table = "sites";
     //const query = `SELECT id FROM ${table} WHERE name='${req.body.name}';`;
     /*async function waitForData() {

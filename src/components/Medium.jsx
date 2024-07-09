@@ -11,7 +11,7 @@ export default function Medium() {
         const [fileName, setFileName] = useState("")
         const [sitesLoading, setSitesLoading] = useState(true)
         const [vCardsLoading, setVCardsLoading] = useState(true)
-        const [previewLoading, setPreviewLoading] = useState(true)
+        //const [previewLoading, setPreviewLoading] = useState(true)
 
         function addressChange(address) {
             if(!address) return ""
@@ -26,7 +26,7 @@ export default function Medium() {
 
         const downloadVcard = async (card) => {
             console.log(card)
-            let convertedPhoto = card.vCardPhoto.replace(`data:image/${"jpeg" || "png"};base64,`, "");
+            let convertedPhoto = card.photo.replace(`data:image/${"jpeg" || "png"};base64,`, "");
             let splitRawAddress;
             if (card.address) {
               splitRawAddress = card.address.split(" ")
@@ -36,7 +36,7 @@ export default function Medium() {
             
             let file = new Blob(
               [
-                `BEGIN:VCARD\nVERSION:4.0\nN:${card.firstName};${card.lastName};;\nFN:${card.lastName} ${card.firstName}\nTITLE:${card.title}\nADR;TYPE=home:;;${splitRawAddress[0]};${splitRawAddress[1]};;${splitRawAddress[2]};${splitRawAddress[3]}\nEMAIL:${card.email}\nTEL:${card.tel}\nURL:${card.contactUrl}\nNOTE:${card.notes}\nPHOTO;ENCODING=BASE64;TYPE=JPEG:${convertedPhoto}\nEND:VCARD`
+                `BEGIN:VCARD\nVERSION:4.0\nN:${card.firstName};${card.lastName};;\nFN:${card.lastName} ${card.firstName}\nTITLE:${card.title}\nADR;TYPE=home:;;${splitRawAddress[0]};${splitRawAddress[1]};;${splitRawAddress[2]};${splitRawAddress[3]}\nEMAIL:${card.email}\nTEL:${card.phone}\nURL:https://${card.website}\nNOTE:${card.notes}\nPHOTO;ENCODING=BASE64;TYPE=JPEG:${convertedPhoto}\nEND:VCARD`
               ],
               { type: "text/vcard;charset=utf-8" }
             );
@@ -62,11 +62,12 @@ export default function Medium() {
                             if (err) return err;
                         })
                         .finally(() => {
-                            setSitesLoading(false)
+                            
                             window.location.replace(`https://${redir}`)
                         });
                     }
                 }
+                setSitesLoading(false)
             })
           }, [path.pathname])
         
@@ -88,14 +89,15 @@ export default function Medium() {
                             if (err) return err;
                         })
                         .finally(() => {
-                            setVCardsLoading(false)
+                            
                         });
                     }
                 }
+                setVCardsLoading(false)
             })
           }, [path.pathname])
         
-          useEffect(() => {
+          /*useEffect(() => {
             fetch('http://localhost:3001/fetchedpreviews')
             .then(res => res.json())
             .then(data => {
@@ -119,16 +121,14 @@ export default function Medium() {
                     }
                 }
             })
-          }, [path.pathname])
+          }, [path.pathname])*/
 
     //const [params]  = useSearchParams()
     //const name = "https://" + params.get("next")
-
-    
-    return (
-        sitesLoading || vCardsLoading || previewLoading ? <h1>Loading...</h1> :
+    if (sitesLoading || vCardsLoading) return <h1>Loading...</h1>
+    return(
         <VcardUi curVCard={object[0]} firstName={object[0].firstName} lastName={object[0].lastName} title={object[0].title} email={object[0].email} 
-        addressChange={addressChange} tel={object[0].tel} address={object[0].address} notes={object[0].notes} contactUrl={object[0].contactUrl} photo={object[0].vCardPhoto} 
+        addressChange={addressChange} tel={object[0].phone} address={object[0].address} notes={object[0].notes} contactUrl={object[0].website} photo={object[0].photo} 
         fileName={fileName} fileNameChange={fileNameChange} downloadVcard={downloadVcard} />
     )
 }

@@ -71,6 +71,7 @@ export default function App() {
     "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
   ]
   const user = import.meta.env.VITE_REACT_APP_USER;
+  console.log(user)
   const [shortUrl, setShortUrl] = useState("")
   const [width, setWidth] = useState(300)
   const [height, setHeight] = useState(300)
@@ -124,7 +125,6 @@ export default function App() {
   const [photo, setPhoto] = useState(null)
   const [tel, setTel] = useState("")
   const [rawAddress, setRawAddress] = useState("")
-  const [checkIfClicked, setCheckIfClicked] = useState(false)
   const [backRoute, setBackRoute] = useState("sites")
   let siteUrl = `localhost:5173/${shortUrl}`
   let vCardUrl = `localhost:5173/${shortUrl}`
@@ -134,6 +134,23 @@ export default function App() {
   //vcards?id=${previewId}&preview=${preview}
   //medium?next=${url}
   //console.log(siteUrl)
+
+  function resizeImage(base64Str) {
+    return new Promise(resolve => {
+      let img = new Image();
+      img.src = base64Str;
+      img.onload = () => {
+        let canvas = document.createElement("canvas");
+        let width = img.width;
+        let height = img.height;
+        canvas.width = width;
+        canvas.height = height;
+        let ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, width, height);
+        resolve(canvas.toDataURL("image/jpeg", 0.2));
+      };
+    });
+  }
   
   useEffect(() => {
     setShortUrl(produceShortUrl())
@@ -280,7 +297,8 @@ export default function App() {
       fileReader.readAsDataURL(file);
       
       fileReader.onload = () => {
-        resolve(fileReader.result);
+        resizeImage(fileReader.result)
+        .then(result => resolve(result))
       };
 
       fileReader.onerror = (error) => {
@@ -554,6 +572,7 @@ export default function App() {
     let convertedPhoto;
     if (photo) {
       convertedPhoto = await convToBase64(photo)
+      console.log(convertedPhoto)
     }
 
     async function waitData() {
@@ -629,7 +648,7 @@ export default function App() {
                 </div>
                 <div className="category">
                   { urls === true ? <Url url={url} siteUrl={siteUrl} onUrlChange={onUrlChange} /> : 
-                  vCards === true ? <Vcard onSaveForPreview={onSaveForPreview} vCardUrl={vCardUrl} firstName={firstName} firstNameChange={firstNameChange} 
+                  vCards === true ? <Vcard vCardUrl={vCardUrl} firstName={firstName} firstNameChange={firstNameChange} 
                   lastName={lastName} lastNameChange={lastNameChange} title={title} titleChange={titleChange} email={email} emailChange={emailChange} 
                   contactUrl={contactUrl} contactUrlChange={contactUrlChange} tel={tel} telChange={telChange} rawAddress={rawAddress}
                   rawAddressChange={rawAddressChange} notes={notes} notesChange={notesChange} selectImg={selectImg} 

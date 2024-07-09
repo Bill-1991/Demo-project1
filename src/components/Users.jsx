@@ -25,6 +25,7 @@ const Users = () => {
     const [photo, setPhoto] = useState(null)
     const [tel, setTel] = useState("")
     const [rawAddress, setRawAddress] = useState("")
+    
 
     useEffect(() => {
         fetch('http://localhost:3001/fetchedsites')
@@ -114,6 +115,23 @@ const Users = () => {
       const rawAddressChange = (e) => {
         setRawAddress(e.target.value)
       }
+
+      function resizeImage(base64Str) {
+        return new Promise(resolve => {
+          let img = new Image();
+          img.src = base64Str;
+          img.onload = () => {
+            let canvas = document.createElement("canvas");
+            let width = img.width;
+            let height = img.height;
+            canvas.width = width;
+            canvas.height = height;
+            let ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, width, height);
+            resolve(canvas.toDataURL("image/jpeg", 0.2));
+          };
+        });
+      }
     
       const convToBase64 = (file) => {
         return new Promise((resolve, reject) => {
@@ -121,7 +139,8 @@ const Users = () => {
           fileReader.readAsDataURL(file);
           
           fileReader.onload = () => {
-            resolve(fileReader.result);
+            resizeImage(fileReader.result)
+            .then(result => resolve(result))
           };
     
           fileReader.onerror = (error) => {
@@ -168,7 +187,6 @@ const Users = () => {
         .then((res, err) => {
           if (err) console.log(err);
         })
-        console.log("ok")
         window.location.reload()
       }
       else {
@@ -192,8 +210,9 @@ const Users = () => {
         .then((res, err) => {
           if (err) console.log(err);
         })
-        console.log("ok too")
-        window.location.reload()
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000)
       }
     }
 
