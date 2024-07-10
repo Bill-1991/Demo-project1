@@ -77,6 +77,7 @@ export default function Medium() {
             .then(data => {
                 if (data.length) {
                     let obj = data.filter(vcard => vcard.short === path.pathname.replace("/", ""))
+                    console.log(obj[0].short)
                     let table = "vcards"
                     if (obj.length) {
                         setObject(obj)

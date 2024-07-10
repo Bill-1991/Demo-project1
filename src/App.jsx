@@ -71,7 +71,6 @@ export default function App() {
     "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
   ]
   const user = import.meta.env.VITE_REACT_APP_USER;
-  console.log(user)
   const [shortUrl, setShortUrl] = useState("")
   const [width, setWidth] = useState(300)
   const [height, setHeight] = useState(300)
