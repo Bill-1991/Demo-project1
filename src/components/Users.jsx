@@ -25,7 +25,6 @@ const Users = () => {
     const [photo, setPhoto] = useState(null)
     const [tel, setTel] = useState("")
     const [rawAddress, setRawAddress] = useState("")
-    console.log(window.location)
     
 
     useEffect(() => {
