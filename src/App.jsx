@@ -626,8 +626,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path={`${user === userParam ? "*" : "/*"}`} element={ user === userParam ? <Users />
-         :
+        <Route exact path="/*" element={ 
             <div className="App">
               <div className="allqr">
                 <div className="qr" style={{ overflow: "auto"}} ref={ref} />
@@ -686,7 +685,8 @@ export default function App() {
               </div>
             </div>
            } />
-          <Route exact path=":short" element={<Medium />} />
+          <Route exact path="/users/*" element={<Users />} />
+          <Route exact path="/medium/*" element={<Medium />} />
       
       </Routes>
     </BrowserRouter>
