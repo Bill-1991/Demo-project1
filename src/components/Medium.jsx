@@ -77,7 +77,6 @@ export default function Medium({ qrParam }) {
             .then(data => {
                 if (data.length) {
                     let obj = data.filter(vcard => vcard.short === qrParam)
-                    console.log(obj[0].short)
                     let table = "vcards"
                     if (obj.length) {
                         setObject(obj)

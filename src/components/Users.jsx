@@ -191,7 +191,7 @@ const Users = () => {
       }
       else {
         convertedPhoto = obj.photo
-        Axios.post('https://dynamic-styled-qrcode-generator.onrender.com/vcardsupdate/', {
+        await Axios.post('https://dynamic-styled-qrcode-generator.onrender.com/vcardsupdate/', {
           obj: {
             qrSvg: obj.qrSvg,
             short: obj.short,
@@ -210,9 +210,6 @@ const Users = () => {
         .then((res, err) => {
           if (err) console.log(err);
         })
-        setTimeout(() => {
-          window.location.reload()
-        }, 1000)
       }
     }
 

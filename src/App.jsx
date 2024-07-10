@@ -68,7 +68,6 @@ export default function App() {
   const urlParams = new URLSearchParams(window.location.search);
   const userParam = urlParams.get('user');
   const qrParam = window.location.pathname.replace("/", "")
-  console.log(qrParam)
   const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
     "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
   ]
@@ -551,7 +550,6 @@ export default function App() {
     if (type < 0) type=0
     setTypeNum(type)
     
-    console.log(typeNum)
   }
 
   const onErrorCorrectionLevelChange = (e) => {
