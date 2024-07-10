@@ -571,7 +571,6 @@ export default function App() {
     let convertedPhoto;
     if (photo) {
       convertedPhoto = await convToBase64(photo)
-      console.log(convertedPhoto)
     }
 
     async function waitData() {

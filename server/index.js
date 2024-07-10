@@ -75,7 +75,6 @@ app.post('/sites', (req, res) => {
 })
 
 app.post('/vcards', (req, res) => {
-    console.log(req.body)
     const vcard = new VCard(
         req.body
     );
