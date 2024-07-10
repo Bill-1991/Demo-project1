@@ -595,7 +595,7 @@ export default function App() {
       }
       
       if (backRoute === "vcards") {
-        Axios.post(`https://dynamic-styled-qrcode-generator.onrender.com/${backRoute}/`, {
+        Axios.post(`https://dynamic-styled-qrcode-generator-1.onrender.com/${backRoute}/`, {
           qrSvg: qrBlob,
           short: shortUrl,
           firstName: firstName,

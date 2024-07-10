@@ -37,7 +37,7 @@ const Users = () => {
     }, [])
     
     useEffect(() => {
-        fetch('https://dynamic-styled-qrcode-generator.onrender.com/fetchedvcards')
+        fetch('https://dynamic-styled-qrcode-generator-1.onrender.com/fetchedvcards')
         .then(res => res.json())
         .then(data => {
           setVCardsArr(data)

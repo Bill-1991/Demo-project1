@@ -4,14 +4,14 @@ import FileSaver from 'file-saver';
 import { useState, useEffect } from "react";
 //import { useLocation } from 'react-router-dom';
 import VcardUi from "./VcardUi";
+import { useLocation } from "react-router";
 
 export default function Medium() {
         const [object, setObject] = useState([])
         const [fileName, setFileName] = useState("")
         const [sitesLoading, setSitesLoading] = useState(true)
         const [vCardsLoading, setVCardsLoading] = useState(true)
-        const urlParams = new URLSearchParams(window.location.search);
-        const qrParam = urlParams.get('qr');
+        let path = useLocation()
         //const [previewLoading, setPreviewLoading] = useState(true)
 
         function addressChange(address) {
@@ -48,7 +48,7 @@ export default function Medium() {
             .then(res => res.json())
             .then(data => {
                 if (data.length) {
-                    let obj = data.filter(site => site.short === qrParam)
+                    let obj = data.filter(site => site.short === path.pathname.replace("/", ""))
                     let table = ""
                     if (obj.length) {
                         setObject(obj)
@@ -69,14 +69,14 @@ export default function Medium() {
                 }
                 setSitesLoading(false)
             })
-          }, [qrParam])
+          }, [path.pathname])
         
           useEffect(() => {
             fetch('https://dynamic-styled-qrcode-generator.onrender.com/fetchedvcards')
             .then(res => res.json())
             .then(data => {
                 if (data.length) {
-                    let obj = data.filter(vcard => vcard.short === qrParam)
+                    let obj = data.filter(vcard => vcard.short === path.pathname.replace("/", ""))
                     console.log(obj[0].short)
                     let table = "vcards"
                     if (obj.length) {
@@ -96,7 +96,7 @@ export default function Medium() {
                 }
                 setVCardsLoading(false)
             })
-          }, [qrParam])
+          }, [path.pathname])
         
           /*useEffect(() => {
             fetch('http://localhost:3001/fetchedpreviews')
