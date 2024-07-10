@@ -125,10 +125,8 @@ export default function App() {
   const [tel, setTel] = useState("")
   const [rawAddress, setRawAddress] = useState("")
   const [backRoute, setBackRoute] = useState("sites")
-  let siteUrl = `https://dynamic-styled-qrcode-generator-1.onrender.com/${shortUrl}`
-  let vCardUrl = `https://dynamic-styled-qrcode-generator-1.onrender.com/${shortUrl}`
-  let path = window.location.pathname.replace("/", "");
-  console.log(path)
+  let siteUrl = `https://dynamic-styled-qrcode-generator-1.onrender.com/medium?qr=${shortUrl}`
+  let vCardUrl = `https://dynamic-styled-qrcode-generator-1.onrender.com/medium?qr=${shortUrl}`
   const ref = useRef(null);
   
   //vcards?id=${vCardId}&preview=${preview}
@@ -688,7 +686,7 @@ export default function App() {
               </div>
             </div>
            } />
-          {path && <Route exact path={path} element={<Medium />} /> }
+          <Route exact path="/medium" element={<Medium />} />
       
       </Routes>
     </BrowserRouter>
