@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import "./App.css";
 import Axios from "axios";
 import QRCodeStyling from "qr-code-styling";
@@ -127,6 +127,8 @@ export default function App() {
   const [backRoute, setBackRoute] = useState("sites")
   let siteUrl = `https://dynamic-styled-qrcode-generator-1.onrender.com/${shortUrl}`
   let vCardUrl = `https://dynamic-styled-qrcode-generator-1.onrender.com/${shortUrl}`
+  let path = window.location.pathname.replace("/", "");
+  console.log(path)
   const ref = useRef(null);
   
   //vcards?id=${vCardId}&preview=${preview}
@@ -686,7 +688,7 @@ export default function App() {
               </div>
             </div>
            } />
-          <Route exact path=':short' element={<Medium />} />
+          <Route exact path={path} element={<Medium />} />
       
       </Routes>
     </BrowserRouter>
