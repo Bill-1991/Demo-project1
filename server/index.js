@@ -56,7 +56,7 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 app.use(express.urlencoded({limit: '10mb', extended: true}));
 app.use(express.json({limit: '10mb'}));
 app.use(cors({
-    origin: 'http://localhost:517https://dynamic-styled-qrcode-generator-1.onrender.com'
+    origin: 'https://dynamic-styled-qrcode-generator-1.onrender.com'
   }));
 
 
