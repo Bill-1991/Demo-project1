@@ -594,7 +594,7 @@ export default function App() {
         setShortUrl(produceShortUrl)
       }
       
-      if (backRoute === "vcards") {
+      else if (backRoute === "vcards") {
         Axios.post(`https://dynamic-styled-qrcode-generator.onrender.com/${backRoute}/`, {
           qrSvg: qrBlob,
           short: shortUrl,
