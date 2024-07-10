@@ -5,9 +5,9 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(() => {
 
   return {
-    define: {
-      "process.env.IS_PREACT": JSON.stringify("true"),
-    },
     plugins: [react()],
+    build: {
+      outDir: 'dist'
+    }
   }
 })
