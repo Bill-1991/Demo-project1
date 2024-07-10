@@ -371,7 +371,8 @@ export default function App() {
 
   const onFileChange = (e) => {
     let img = e.target.files[0];
-    setImage(URL.createObjectURL(img))
+    let image = resizeImage(img)
+    setImage(URL.createObjectURL(image))
   }
 
   const onExtensionChange = (event) => {
