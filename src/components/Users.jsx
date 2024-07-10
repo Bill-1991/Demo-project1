@@ -228,7 +228,9 @@ const Users = () => {
             <>
             <div className="sites">
                 <h2>Sites</h2>
-                <div className="sitecard">
+                {
+                  sitesArr.length ? 
+                  <div className="sitecard">
                     {
                         sitesArr.map(site => <div key={site._id}>
                             <img src={`data:image/svg+xml;utf8,${encodeURIComponent(site.qrSvg.replace(`<?xml version="1.0" standalone="no"?>`, ""))}`} />
@@ -236,12 +238,16 @@ const Users = () => {
                             <button onClick={() => onEdit(site._id, "urls")} >Edit Qr</button>
                         </div>)
                     }
-                </div>
+                </div> :
+                <h1>No sites yet</h1>
+                }
             </div>
             <hr />
             <div className="vcards">
                 <h2>V-Cards</h2>
-                <div className="vcardscard">
+                {
+                  vCardsArr.length ? 
+                  <div className="vcardscard">
                     {
                         vCardsArr.map(vCard => <div key={vCard._id}>
                             <img src={`data:image/svg+xml;utf8,${encodeURIComponent(vCard.qrSvg.replace(`<?xml version="1.0" standalone="no"?>`, ""))}`} />
@@ -249,7 +255,10 @@ const Users = () => {
                             <button onClick={() => onEdit(vCard._id, "vcards")} >Edit Qr</button>
                         </div>)
                     }
-                </div>
+                  </div> :
+                  <h1>No v-Cards yet</h1>
+                }
+                
             </div>
         </> 
         }
