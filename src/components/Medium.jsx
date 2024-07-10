@@ -44,7 +44,7 @@ export default function Medium() {
           }
 
         useEffect(() => {
-            fetch('http://localhost:3001/fetchedsites')
+            fetch('https://dynamic-styled-qrcode-generator-1.onrender.com/fetchedsites')
             .then(res => res.json())
             .then(data => {
                 if (data.length) {
@@ -54,7 +54,7 @@ export default function Medium() {
                         setObject(obj)
                         table = "urls";
                         let redir = obj[0].urlName
-                        Axios.post('http://localhost:3001/medium', {
+                        Axios.post('https://dynamic-styled-qrcode-generator-1.onrender.com/medium', {
                             name: obj[0].short,
                             table: table
                         })
@@ -72,7 +72,7 @@ export default function Medium() {
           }, [path.pathname])
         
           useEffect(() => {
-            fetch('http://localhost:3001/fetchedvcards')
+            fetch('https://dynamic-styled-qrcode-generator-1.onrender.com/fetchedvcards')
             .then(res => res.json())
             .then(data => {
                 if (data.length) {
@@ -81,7 +81,7 @@ export default function Medium() {
                     if (obj.length) {
                         setObject(obj)
                         table = "vcards";
-                        Axios.post('http://localhost:3001/medium', {
+                        Axios.post('https://dynamic-styled-qrcode-generator-1.onrender.com/medium', {
                             name: obj[0].short,
                             table: table
                         })
