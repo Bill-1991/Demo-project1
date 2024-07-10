@@ -627,7 +627,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path={user === userParam ? `` : "/*" } element={ user === userParam ? <Users />
+        <Route exact path="/*" element={ user === userParam ? <Users />
          :
             <div className="App">
               <div className="allqr">
