@@ -162,7 +162,10 @@ const Users = () => {
       .then((res, err) => {
         if (err) console.log(err);
       })
-      window.location.reload()
+      .finally(() => {
+        window.location.reload()
+      })
+      
     }
 
     const onVCardUpdate = async (curTable) => {
