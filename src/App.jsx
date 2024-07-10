@@ -68,6 +68,7 @@ export default function App() {
   const urlParams = new URLSearchParams(window.location.search);
   console.log(window.location)
   const userParam = urlParams.get('user');
+  console.log(userParam)
   const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
     "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
   ]
@@ -628,7 +629,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path={user === userParam ? `/users` : "/*" } element={ user === userParam ? <Users />
+        <Route exact path={user === userParam ? `` : "/*" } element={ user === userParam ? <Users />
          :
             <div className="App">
               <div className="allqr">

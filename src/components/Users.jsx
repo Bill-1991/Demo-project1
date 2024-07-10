@@ -150,8 +150,8 @@ const Users = () => {
         });
       };
 
-    const onUrlUpdate = (curTable) => {
-      Axios.post(`https://dynamic-styled-qrcode-generator.onrender.com/sitesupdate/`, {
+    const onUrlUpdate = async (curTable) => {
+      await Axios.post(`https://dynamic-styled-qrcode-generator.onrender.com/sitesupdate/`, {
         obj: {
           qrSvg: obj.qrSvg,
           short: obj.short,
@@ -162,17 +162,14 @@ const Users = () => {
       .then((res, err) => {
         if (err) console.log(err);
       })
-      .finally(() => {
-        window.location.reload()
-      })
-      
+      window.location.reload()
     }
 
     const onVCardUpdate = async (curTable) => {
       let convertedPhoto;
       if (photo) {
         convertedPhoto = await convToBase64(photo)
-        Axios.post('https://dynamic-styled-qrcode-generator.onrender.com/vcardsupdate/', {
+        await Axios.post('https://dynamic-styled-qrcode-generator.onrender.com/vcardsupdate/', {
           obj: {
             qrSvg: obj.qrSvg,
             short: obj.short,
