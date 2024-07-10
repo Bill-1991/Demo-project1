@@ -688,7 +688,7 @@ export default function App() {
               </div>
             </div>
            } />
-          <Route exact path=":short" element={<Medium />} />
+          {path && <Route exact path={path} element={<Medium />} /> }
       
       </Routes>
     </BrowserRouter>
