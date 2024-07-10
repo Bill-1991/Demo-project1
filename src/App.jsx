@@ -67,6 +67,7 @@ const qrCode = new QRCodeStyling({
 export default function App() {
   const urlParams = new URLSearchParams(window.location.search);
   const userParam = urlParams.get('user');
+  const qrParam = window.location.pathname.replace("/", "")
   const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
     "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
   ]
@@ -626,7 +627,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/*" element={ 
+        <Route exact path="*" element={ 
             <div className="App">
               <div className="allqr">
                 <div className="qr" style={{ overflow: "auto"}} ref={ref} />
@@ -685,8 +686,8 @@ export default function App() {
               </div>
             </div>
            } />
-          <Route exact path="/users/*" element={<Users />} />
-          <Route exact path="/medium/*" element={<Medium />} />
+          <Route exact path="/users" element={user === userParam ? <Users /> : <h1>Not signed in</h1> } />
+          <Route exact path={qrParam} element={<Medium qrParam={qrParam} />} />
       
       </Routes>
     </BrowserRouter>
