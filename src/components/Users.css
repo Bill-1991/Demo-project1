@@ -5,8 +5,8 @@
 .users .fetchsites .sitecard,
 .users .fetchvcards .vcardscard {
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    flex-direction: row;
+    flex-flow: row wrap;
     align-items: center;
     justify-content: center;
 }
