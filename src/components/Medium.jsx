@@ -90,9 +90,8 @@ export default function Medium({ qrParam }) {
                             if (err) return err;
                         })
                     }
-                } else {
-                    setVCardsLoading(false)
                 }
+                setVCardsLoading(false)
             })
           }, [qrParam])
         
