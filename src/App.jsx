@@ -255,7 +255,7 @@ export default function App() {
   backColor, backColorType, backGradientType, backGradient1, backGradient2, backGradientRotation,
   backgroundDots, imgSize, imgMargin, typeNum, errorCorrectionLevel, vCardUrl, vCards]);
 
-  const selectImg = (e) => {
+  const selectImg = async (e) => {
     setPhoto(e.target.files[0])
   }
 
@@ -369,10 +369,16 @@ export default function App() {
     });
   }*/
 
-  const onFileChange = (e) => {
+  const onFileChange = async (e) => {
     let img = e.target.files[0];
-    let image = resizeImage(img)
-    setImage(URL.createObjectURL(image))
+    let fileName = img.name
+    let image = await convToBase64(img)
+    fetch(image)
+      .then(res => res.blob())
+      .then(blob => {
+        const file = new File([blob], fileName,{ type: "image/jpeg" })
+        setImage(URL.createObjectURL(file))
+      })
   }
 
   const onExtensionChange = (event) => {
