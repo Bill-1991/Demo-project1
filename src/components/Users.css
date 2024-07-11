@@ -1,5 +1,6 @@
 .users {
     display: block;
+    width: 100vw;
 }
 
 .users .fetchsites .sitecard,
