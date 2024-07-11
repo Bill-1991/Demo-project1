@@ -236,7 +236,7 @@ const Users = () => {
                         </div>)
                     }
                 </div> :
-                <h1>No sites yet</h1>
+                <h3>No sites yet</h3>
                 }
             </div>
             <hr />
