@@ -126,7 +126,7 @@ export default function Medium({ qrParam }) {
     return(
         object[0].urlName && !object[0].firstName ? <div></div>
         :
-        object[0].firstName && object[0].urlName ?
+        object[0].firstName && !object[0].urlName ?
         <VcardUi curVCard={object[0]} firstName={object[0].firstName} lastName={object[0].lastName} title={object[0].title} email={object[0].email} 
         addressChange={addressChange} tel={object[0].phone} address={object[0].address} notes={object[0].notes} contactUrl={object[0].website} photo={object[0].photo} 
         fileName={fileName} fileNameChange={fileNameChange} downloadVcard={downloadVcard} />
