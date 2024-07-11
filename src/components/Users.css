@@ -4,9 +4,11 @@
 
 .users .fetchsites .sitecard,
 .users .fetchvcards .vcardscard {
-    display: grid;
-    grid-template-columns: repeat(3, 33%);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
 }
 
 .users .fetchsites .sitecard div,
@@ -43,7 +45,7 @@
 }
 
 
-@media only screen and(max-width: 900px) {
+/*@media only screen and(max-width: 900px) {
     .users .fetchsites .sitecard,
     .users .fetchvcards .vcardscard {
         grid-template-columns: 50% 50% !important;
@@ -55,4 +57,4 @@
     .users .fetchvcards .vcardscard {
         grid-template-columns: 100% !important;
     }
-}
+}*/
