@@ -131,7 +131,10 @@ export default function Medium({ qrParam }) {
         addressChange={addressChange} tel={object[0].phone} address={object[0].address} notes={object[0].notes} contactUrl={object[0].website} photo={object[0].photo} 
         fileName={fileName} fileNameChange={fileNameChange} downloadVcard={downloadVcard} />
         :
+        !object[0].urlName && !object[0].firstName ?
         <h1>Not Found</h1>
+        :
+        undefined
     )
 }
 
