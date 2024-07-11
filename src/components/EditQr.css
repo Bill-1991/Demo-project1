@@ -3,7 +3,6 @@
     min-height: 100vh;
     height: fit-content;
     background-color: white;
-    justify-self: center;
     display: grid;
     grid-template-rows: 8% 92%;
     align-items: center;  
