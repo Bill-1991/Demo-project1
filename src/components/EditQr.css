@@ -1,2 +1,57 @@
+.edit{
+    width: 100%;
+    position: relative;
+    min-height: 100vh;
+    height: fit-content;
+    background-color: white;
+    display: grid;
+    grid-template-rows: 8% 92%;
+    align-items: center;  
+}
 
+.edit .closeEdit {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0);
+    justify-self: flex-end;
+    font-size: 20px;
+    font-weight: 900;
+    height: 45px;
+    color: white;
+    align-self: flex-start !important;
+}
+
+.edit .forms {
+    display: grid;
+    grid-template-columns: 45% 45%;
+    justify-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 50px;
+    align-self: flex-start;
+}
+
+.edit .forms button{
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    width: 75%
+}
+
+@media only screen and (max-width: 500px) {
+    .edit .forms {
+        grid-template-columns: 45% 45% !important;
+        justify-items: flex-start !important;
+    }  
+
+    .edit .forms button{
+        font-size: 15px !important;
+        font-weight: 700;
+        width: 75%
+    }
+
+    .edit .closeEdit {
+        font-size: 18px;
+        align-self: flex-start
+    }
+}
 
