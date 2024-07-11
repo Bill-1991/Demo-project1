@@ -1,8 +1,9 @@
 :root{
-  width: 100vw;
+  width: 1280px;
 }
 
 .App {
+  width: 100%;
   display: grid;
   margin: 0 auto;
   padding: 1rem;
