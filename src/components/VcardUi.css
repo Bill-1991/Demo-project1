@@ -3,18 +3,15 @@
   width: fit-content;
   display: block;
   height: fit-content;
-  background-color: rgba(120, 120, 120, 0.3);
   font-size: larger;
   font: message-box;
   font-weight: 900;
   border: 3px;
-  border-width: 10px;
-  border-color: black;
-  box-shadow: 0 1em 0 1em;
+  text-align: center !important;
 }
 
 .vcardUi div{
-  display: flex;
+  display: grid;
   justify-content: center;
 }
 
@@ -55,7 +52,9 @@
     font-weight: 700;
     color: black;
     background-color: inherit;
-    border-width: 10px;
+    border-width: 2px;
+    border-radius: 7px;
+    border-color: black;
   }
   
   .downloadCard button {
@@ -67,7 +66,6 @@
     border-color: black;
     color: black;
     font-weight: 900;
-    margin-left: 5px;
     box-shadow: 0 0 1em 0em;
     height: 40px;
   }
