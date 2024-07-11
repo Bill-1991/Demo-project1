@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Axios from "axios";
 import EditQr from "./EditQr";
-//import './Users.css'
+import './Users.css';
 
 
 const Users = () => {

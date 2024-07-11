@@ -1,11 +1,3 @@
-body{
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .edit{
     position: relative;
     min-height: 100vh;

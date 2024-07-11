@@ -693,7 +693,6 @@ export default function App() {
            } />
           <Route exact path="/users" element={user === userParam ? <Users /> : <h1>Not signed in</h1> } />
           { qrParam && <Route exact path={qrParam} element={<Medium qrParam={qrParam} />} /> }
-      
       </Routes>
     </BrowserRouter>
     

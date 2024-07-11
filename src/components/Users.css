@@ -1,4 +1,5 @@
 .users {
+    width: 100vw !important;
     display: block;
 }
 
@@ -9,28 +10,28 @@
     align-items: center;
 }
 
-.users .sites .sitecard div,
-.users .vcards .vcardscard div{
+.users .fetchsites .sitecard div,
+.users .fetchvcards .vcardscard div{
     display: grid;
 }
 
-.users .sites h2,
-.users .vcards h2{
+.users .fetchsites h2,
+.users .fetchvcards h2{
     font-size: 23px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 800;
     text-decoration: underline;
 }
 
-.users .sites .sitecard div p,
-.users .vcards .vcardscard div p{
+.users .fetchsites .fetchsitecard div p,
+.users .fetchvcards .vcardscard div p{
     font-size: 18px;
     font-weight: 700;
     justify-self: center;
 }
 
-.users .sites .sitecard div button,
-.users .vcards .vcardscard div button{
+.users .fetchsites .sitecard .fetchsite button,
+.users .fetchvcards .vcardscard .fetchvcard button{
     width: 50%;
     background-color: white;
     border-radius: 15px;
