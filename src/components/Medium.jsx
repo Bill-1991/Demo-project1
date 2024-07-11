@@ -46,7 +46,7 @@ export default function Medium({ qrParam }) {
         useEffect(() => {
             fetch('https://dynamic-styled-qrcode-generator.onrender.com/fetchedsites')
             .then(res => res.json())
-            .then(data => {
+            .then(async data => {
                 if (data.length) {
                     let obj = data.filter(site => site.short === qrParam)
                     let table = ""
@@ -54,7 +54,7 @@ export default function Medium({ qrParam }) {
                         setObject(obj)
                         table = "urls";
                         let redir = obj[0].urlName
-                        Axios.post('https://dynamic-styled-qrcode-generator.onrender.com/medium', {
+                        await Axios.post('https://dynamic-styled-qrcode-generator.onrender.com/medium', {
                             name: obj[0].short,
                             table: table
                         })
@@ -65,8 +65,10 @@ export default function Medium({ qrParam }) {
                             window.location.replace(`https://${redir}`)
                         });
                     }
+                } else {
+                    setSitesLoading(false)
                 }
-                setSitesLoading(false)
+                
             })
           }, [qrParam])
         
@@ -88,8 +90,9 @@ export default function Medium({ qrParam }) {
                             if (err) return err;
                         })
                     }
+                } else {
+                    setVCardsLoading(false)
                 }
-                setVCardsLoading(false)
             })
           }, [qrParam])
         
@@ -122,7 +125,6 @@ export default function Medium({ qrParam }) {
     //const [params]  = useSearchParams()
     //const name = "https://" + params.get("next")
     if (sitesLoading || vCardsLoading) return <h1>Loading...</h1>
-    if (object[0].urlName) return <h1></h1>
     return(
         object[0] ?
         <VcardUi curVCard={object[0]} firstName={object[0].firstName} lastName={object[0].lastName} title={object[0].title} email={object[0].email} 
