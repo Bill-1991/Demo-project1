@@ -8,6 +8,7 @@
 }
 
 body{
+  width: 100% !important;
   display: flex;
   justify-content: center;
   height: fit-content;
@@ -15,6 +16,7 @@ body{
 }
 
 .App {
+  width: 100% !important;
   display: grid;
   margin: 0 auto;
   padding: 1rem;
