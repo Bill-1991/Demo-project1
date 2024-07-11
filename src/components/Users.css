@@ -1,5 +1,4 @@
 .users {
-    width: 100vw !important;
     display: block;
 }
 
@@ -8,6 +7,8 @@
     display: grid;
     grid-template-columns: repeat(3, 33%);
     align-items: center;
+    justify-self: center;
+    justify-items: center;
 }
 
 .users .fetchsites .sitecard div,
