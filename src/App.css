@@ -1,6 +1,9 @@
-
+:root{
+  text-align: center;
+}
 
 .App {
+  width: 100vw;
   display: grid;
   margin: 0 auto;
   padding: 1rem;
