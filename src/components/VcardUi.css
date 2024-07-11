@@ -28,7 +28,7 @@
 .mainUi img{
   width: 150px;
   height: 150px;
-  border-radius: 0;
+  border-radius: 20px;
   justify-self: center;
 }
 

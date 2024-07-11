@@ -126,7 +126,7 @@ export default function Medium({ qrParam }) {
     //const name = "https://" + params.get("next")
     if (sitesLoading || vCardsLoading) return <h1>Loading...</h1>
     return(
-        <div>
+        <div className="medium">
             {
                 object[0] ?
                 <VcardUi curVCard={object[0]} firstName={object[0].firstName} lastName={object[0].lastName} title={object[0].title} email={object[0].email} 

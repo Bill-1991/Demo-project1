@@ -1,4 +1,6 @@
 body{
+  margin: 0;
+  padding: 0;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -10,6 +12,7 @@ body{
 }
 
 .App {
+  width: 100vw;
   display: grid;
   margin: 0 auto;
   padding: 1rem;
@@ -17,7 +20,7 @@ body{
   justify-content: center;
   min-height: 100vh;
   align-items: flex-start !important;
-  background-color: aliceblue;
+  background-color: white;
 }
 
 .App input,
