@@ -62,12 +62,12 @@ export default function Medium({ qrParam }) {
                             if (err) return err;
                         })
                         .finally(() => {
-                            setSitesLoading(false)
+                            
                             window.location.replace(`https://${redir}`)
                         });
                     }
                 }
-                
+                setSitesLoading(false)
             })
           }, [qrParam])
         
