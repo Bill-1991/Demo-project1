@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Axios from "axios";
 import EditQr from "./EditQr";
-import './Users.css'
+//import './Users.css'
 
 
 const Users = () => {
@@ -223,13 +223,13 @@ const Users = () => {
             rawAddressChange={rawAddressChange}  tel={tel} telChange={telChange} notes={notes} notesChange={notesChange} photo={photo}
             selectImg={selectImg} onUrlUpdate={onUrlUpdate} onVCardUpdate={onVCardUpdate} /> : 
             <>
-            <div className="sites">
+            <div className="fetchsites">
                 <h2>Sites</h2>
                 {
                   sitesArr.length ? 
                   <div className="sitecard">
                     {
-                        sitesArr.map(site => <div key={site._id}>
+                        sitesArr.map(site => <div className="fetchsite" key={site._id}>
                             <img src={`data:image/svg+xml;utf8,${encodeURIComponent(site.qrSvg.replace(`<?xml version="1.0" standalone="no"?>`, ""))}`} />
                             <p>{site.urlName}</p>
                             <button onClick={() => onEdit(site._id, "urls")} >Edit Qr</button>
@@ -240,20 +240,20 @@ const Users = () => {
                 }
             </div>
             <hr />
-            <div className="vcards">
+            <div className="fetchvcards">
                 <h2>V-Cards</h2>
                 {
                   vCardsArr.length ? 
                   <div className="vcardscard">
                     {
-                        vCardsArr.map(vCard => <div key={vCard._id}>
+                        vCardsArr.map(vCard => <div className="fetchvcard" key={vCard._id}>
                             <img src={`data:image/svg+xml;utf8,${encodeURIComponent(vCard.qrSvg.replace(`<?xml version="1.0" standalone="no"?>`, ""))}`} />
                             <p>{vCard.firstName + " " + vCard.lastName}</p>
                             <button onClick={() => onEdit(vCard._id, "vcards")} >Edit Qr</button>
                         </div>)
                     }
                   </div> :
-                  <h1>No v-Cards yet</h1>
+                  <h3>No v-Cards yet</h3>
                 }
                 
             </div>

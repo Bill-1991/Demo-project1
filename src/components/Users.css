@@ -1,11 +1,20 @@
 .users {
     display: block;
+    background: #bdc3c7;
+    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
+    background: linear-gradient(to right, #2c3e50, #bdc3c7);
 }
 
-.users .sites .sitecard,
-.users .vcards .vcardscard {
+.users .fetchsites .sitecard,
+.users .fetchvcards .vcardscard {
     display: grid;
-    grid-template-columns: repeat(3, 33%);
+    grid-template-columns: repeat(4, 24%);
+    gap: 1%;
+}
+
+.users .sites .sitecard div,
+.users .vcards .vcardscard div{
+    display: grid;
 }
 
 .users .sites h2,
@@ -20,6 +29,7 @@
 .users .vcards .vcardscard p{
     font-size: 18px;
     font-weight: 700;
+    justify-self: center;
 }
 
 .users .sites .sitecard button,
@@ -32,4 +42,5 @@
     color: black;
     font-size: 16px;
     font-weight: 700;
+    justify-self: center;
 }
