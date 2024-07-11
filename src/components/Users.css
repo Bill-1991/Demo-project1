@@ -9,8 +9,7 @@
 .users .fetchsites .sitecard,
 .users .fetchvcards .vcardscard {
     display: grid;
-    grid-template-columns: repeat(4, 24%);
-    gap: 1%;
+    grid-template-columns: repeat(3, 33%);
     align-items: center;
 }
 
@@ -27,15 +26,15 @@
     text-decoration: underline;
 }
 
-.users .sites .sitecard p,
-.users .vcards .vcardscard p{
+.users .sites .sitecard div p,
+.users .vcards .vcardscard div p{
     font-size: 18px;
     font-weight: 700;
     justify-self: center;
 }
 
-.users .sites .sitecard button,
-.users .vcards .vcardscard button{
+.users .sites .sitecard div button,
+.users .vcards .vcardscard div button{
     width: 50%;
     background-color: white;
     border-radius: 15px;
@@ -45,4 +44,19 @@
     font-size: 16px;
     font-weight: 700;
     justify-self: center;
+}
+
+
+@media only screen and(max-width: 900px) {
+    .users .fetchsites .sitecard,
+    .users .fetchvcards .vcardscard {
+        grid-template-columns: 50% 50%;
+    }
+}
+
+@media only screen and(max-width: 600px) {
+    .users .fetchsites .sitecard,
+    .users .fetchvcards .vcardscard {
+        grid-template-columns: 100%;
+    }
 }

@@ -4,6 +4,7 @@ import FileSaver from 'file-saver';
 import { useState, useEffect } from "react";
 //import { useLocation } from 'react-router-dom';
 import VcardUi from "./VcardUi";
+import '.Medium.css';
 //import { useLocation } from "react-router";
 
 export default function Medium({ qrParam }) {

@@ -1,10 +1,16 @@
 .vcardUi {
+  max-width: 375px;
+  width: fit-content;
   display: block;
   height: fit-content;
   background-color: rgba(120, 120, 120, 0.3);
   font-size: larger;
   font: message-box;
   font-weight: 900;
+  border: 3px;
+  border-width: 10px;
+  border-color: black;
+  box-shadow: 0 1em 0 1em;
 }
 
 .vcardUi div{
@@ -13,20 +19,19 @@
 }
 
 .mainUi{
-  display: flex;
-  gap: 100px;
+  display: grid;
   justify-content: center;
   align-items: center;
 }
 
 .mainUi .name{
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .mainUi img{
   width: 150px;
   height: 150px;
-  border-radius: 100%;
+  border-radius: 0;
   justify-self: center;
 }
 
@@ -36,7 +41,7 @@
 }
 
 .downloadCard {
-    display: flex;
+    display: grid;
     gap: 30px;
     justify-content: center;
     margin-top: 2rem;
@@ -50,12 +55,12 @@
     font-weight: 700;
     color: black;
     background-color: inherit;
-    border-width: 3px;
-  
+    border-width: 10px;
   }
   
   .downloadCard button {
-    justify-self: flex-start;
+    justify-self: center;
+    width: 200px;
     background-color: white;
     font-size: 14px;
     border-width: 3px;

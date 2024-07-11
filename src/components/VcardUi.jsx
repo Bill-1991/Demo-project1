@@ -18,27 +18,21 @@ const VcardUi = ({ curVCard, addressChange, fileName, fileNameChange, downloadVc
                 </div>
             </div>
             <div className="titleUi">
-                <p style={{textDecoration: "underline"}}>Title: </p>
                 { title && <p>{title}</p> }
             </div>
             <div className="emailUi">
-                <p  style={{textDecoration: "underline"}}>email: </p>
                 { email && <p>{email}</p> }
             </div>
             <div className="addressUi">
-                <p  style={{textDecoration: "underline"}}>Address:</p>
                 { address && <p>{address} </p> }
             </div>
             <div className="phoneUi">
-                <p  style={{textDecoration: "underline"}}>Phone Number: </p>
                 { tel && <p>{tel}</p> }
             </div>
             <div className="webUi">
-                <p style={{textDecoration: "underline"}}>Website: </p>
                 { contactUrl && <p>{contactUrl}</p> }
             </div>
             <div className="notesUi">
-                <p style={{textDecoration: "underline"}}>Notes: </p>
                 { notes && <p>{notes}</p> }
             </div>
             <div className='downloadCard'>
