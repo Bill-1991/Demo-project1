@@ -5,8 +5,9 @@
 .App {
   width: 100vw;
   display: grid;
-  grid-template-columns: 35% 65%;
+  grid-template-columns: 35% 60%;
   justify-content: center;
+  text-align: center;
   min-height: 100vh;
   align-items: flex-start !important;
   background-color: white;
@@ -60,10 +61,6 @@
 @media only screen and (max-width: 970px) {
   .App {
     display: block !important
-  }
-
-  .categories {
-    margin-top: 2rem;
   }
 
   .categoryBtns {
