@@ -584,7 +584,7 @@ export default function App() {
       let qrBlob = await qrText.then(value => value.text().then(value => value));
       
       if (backRoute === "sites") {
-        Axios.post(`https://dynamic-styled-qrcode-generator.onrender.com/${backRoute}/`, {
+        Axios.post(`http://localhost:3001/${backRoute}/`, {
           qrSvg: qrBlob,
           short: shortUrl,
           urlName: url
@@ -601,7 +601,7 @@ export default function App() {
       }
       
       else if (backRoute === "vcards") {
-        Axios.post(`https://dynamic-styled-qrcode-generator.onrender.com/${backRoute}/`, {
+        Axios.post(`http://localhost:3001/${backRoute}/`, {
           qrSvg: qrBlob,
           short: shortUrl,
           firstName: firstName,
