@@ -2,7 +2,7 @@
 import './Memberships.css';
 
 
-const Memberships = ({ edit, membershipUrl, membershipName, curTable, obj, expires, onExpiresChange, onMembershipNameChange, 
+const Memberships = ({ edit, membershipUrl, name, curTable, obj, expires, onExpiresChange, onNameChange, 
   onMembershipUpdate }) => {
     return (
       <div className='memberships'>
@@ -12,7 +12,7 @@ const Memberships = ({ edit, membershipUrl, membershipName, curTable, obj, expir
       </div> }
       <div className='name'>
         <p>Name: </p>
-        <input value={membershipName} onChange={onMembershipNameChange} placeholder={edit && curTable === 'memberships' ? obj.name : "Name"} />
+        <input value={name} onChange={onNameChange} placeholder={edit && curTable === 'memberships' ? obj.name : "Name"} />
       </div>
       <div className='expires'>
         <p>Expires at: </p>

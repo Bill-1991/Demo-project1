@@ -295,6 +295,10 @@ export default function App() {
     setRawAddress(e.target.value)
   }
 
+  const onNameChange = (e) => {
+    setName(e.target.value)
+  }
+
   const convToBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
@@ -342,10 +346,6 @@ export default function App() {
       setMemberships(true)
       setBackRoute("memberships")
     }
-  }
-
-  const onMembershipNameChange = (e) => {
-    setName(e.target.value)
   }
 
   const onExpiresChange = (e) => {
@@ -686,8 +686,8 @@ export default function App() {
                   contactUrl={contactUrl} contactUrlChange={contactUrlChange} tel={tel} telChange={telChange} rawAddress={rawAddress}
                   rawAddressChange={rawAddressChange} notes={notes} notesChange={notesChange} selectImg={selectImg} 
                   /> 
-                  : memberships === true ? <Memberships membershipUrl={membershipUrl} membershipName={name} expires={expires} 
-                  onExpiresChange={onExpiresChange} onMembershipNameChange={onMembershipNameChange}  /> :
+                  : memberships === true ? <Memberships membershipUrl={membershipUrl} expires={expires} 
+                  onExpiresChange={onExpiresChange} name={name} onNameChange={onNameChange}  /> :
                   undefined }
                 </div>
                 <div className="customize">

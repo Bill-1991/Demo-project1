@@ -21,7 +21,7 @@
 
 .edit .forms {
     display: grid;
-    grid-template-columns: 45% 45%;
+    grid-template-columns: repeat(3, 33%);
     justify-items: center;
     background-color: rgba(0, 0, 0, 0.6);
     height: 50px;
@@ -38,18 +38,19 @@
 
 @media only screen and (max-width: 500px) {
     .edit .forms {
-        grid-template-columns: 45% 45% !important;
+        display: flex !important;
         justify-items: flex-start !important;
+        gap: 10px;
     }  
 
     .edit .forms button{
-        font-size: 15px !important;
+        font-size: 13px !important;
         font-weight: 700;
-        width: 75%
+        width: fit-content
     }
 
     .edit .closeEdit {
-        font-size: 18px;
+        font-size: 14px;
         align-self: flex-start
     }
 }

@@ -1,12 +1,15 @@
-.memberships {
+.memberships{
+    display: grid;
+}
+
+.memberships div{
     display: grid;
     grid-template-columns: 30% 70%;
     align-items: center;
-    margin-top: 2rem;
     background-color: rgba(120, 120, 120, 0.1);
 }
 
-.memberships p {
+.memberships p{
     font-size: 16px;
     font-weight: 700;
     font-style: oblique;
@@ -23,4 +26,28 @@
     color: black;
     height: 30px;
     align-self: center;
+    border-radius: 10px;
+}
+
+.memberships .save {
+    position: relative;
+    top: 50px;
+    width: 100px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 19px;
+    border-radius: 8px;
+    border-width: 3px;
+    border-color: black;
+    justify-self: center;
+}
+
+@media only screen and (max-width: 450px) {
+    .memberships div{
+        display: block !important
+    }
+
+    .memberships input {
+        width: 95vw;
+    }
 }

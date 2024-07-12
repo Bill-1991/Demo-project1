@@ -5,8 +5,10 @@
 }
 
 .users .fetchsites .sitecard,
-.users .fetchvcards .vcardscard {
+.users .fetchvcards .vcardscard,
+.users .fetchmemberships .membershipscard {
     display: flex;
+    gap: 20px;
     flex-direction: row;
     flex-flow: row wrap;
     align-items: center;
@@ -14,28 +16,39 @@
 }
 
 .users .fetchsites .sitecard div,
-.users .fetchvcards .vcardscard div{
+.users .fetchvcards .vcardscard div,
+.users .fetchmemberships .membershipscard div{
     display: grid;
 }
 
 .users .fetchsites h2,
-.users .fetchvcards h2{
+.users .fetchvcards h2,
+.users .fetchmemberships h2{
     font-size: 23px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 800;
     text-decoration: underline;
+    align-self: flex-start;
 }
 
-.users .fetchsites .fetchsitecard div p,
-.users .fetchvcards .vcardscard div p{
+.users .fetchsites h3,
+.users .fetchvcards h3,
+.users .fetchmemberships h3{
+    align-self: center;
+}
+
+.users .fetchsites .sitecard div p,
+.users .fetchvcards .vcardscard div p,
+.users .fetchmemberships .membershipscard div p{
     font-size: 18px;
     font-weight: 700;
     justify-self: center;
 }
 
 .users .fetchsites .sitecard .fetchsite button,
-.users .fetchvcards .vcardscard .fetchvcard button{
-    width: 50%;
+.users .fetchvcards .vcardscard .fetchvcard button,
+.users .fetchmemberships .membershipscard .fetchmembership button{
+    width: 200px;
     background-color: white;
     border-radius: 15px;
     border-width: 3px;

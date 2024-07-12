@@ -201,12 +201,12 @@ const Users = () => {
       window.location.reload()
     }
 
-    const onMmebershipUpdate = async (curTable) => {
+    const onMembershipUpdate = async (curTable) => {
       await Axios.post(`http://localhost:3001/membershipsupdate/`, {
         obj: {
           qrSvg: obj.qrSvg,
           short: obj.short,
-          name: url,
+          name: name,
           expires_at: expires
         },
         curTable: curTable,
@@ -274,7 +274,7 @@ const Users = () => {
             firstNameChange={firstNameChange} lastName={lastName} lastNameChange={lastNameChange} title={title} titleChange={titleChange} 
             email={email} emailChange={emailChange} contactUrl={contactUrl} contactUrlChange={contactUrlChange} rawAddress={rawAddress} 
             rawAddressChange={rawAddressChange}  tel={tel} telChange={telChange} notes={notes} notesChange={notesChange} photo={photo}
-            selectImg={selectImg} onUrlUpdate={onUrlUpdate} onVCardUpdate={onVCardUpdate} onMmebershipUpdate={onMmebershipUpdate} 
+            selectImg={selectImg} onUrlUpdate={onUrlUpdate} onVCardUpdate={onVCardUpdate} onMembershipUpdate={onMembershipUpdate} 
             selectMembershipForm={selectMembershipForm} membershipForm={membershipForm} onNameChange={onNameChange} 
             onExpiresChange={onExpiresChange} name={name} expires={expires} /> : 
             <>
