@@ -78,7 +78,10 @@ body{
   .App {
     display: grid !important;
     grid-template-columns: 50% 50%;
-    gap: 1rem;
+  }
+
+  .App .categories{
+    margin-top: 1.5rem;
   }
 
 }
