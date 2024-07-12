@@ -9,7 +9,7 @@ import bodyParser from 'body-parser';
 //import { IP2Location } from 'ip2location-nodejs';
 import Url from './models/url.js';
 import VCard from './models/vcard.js';
-import Preview from './models/preview.js';
+import Membership from './models/membership.js';
 //import { MongoClient, ServerApiVersion } from 'mongodb';
 import mongoose from 'mongoose';
 
@@ -56,7 +56,7 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 app.use(express.urlencoded({limit: '10mb', extended: true}));
 app.use(express.json({limit: '10mb'}));
 app.use(cors({
-    origin: 'localhost:5173'
+    origin: 'http://localhost:5173'
   }));
 
 
@@ -89,7 +89,15 @@ app.post('/vcards', (req, res) => {
     //insert(req.body, keys, table);
 })
 
-app.post('/previews', (req, res) => {
+app.post('/memberships', (req, res) => {
+    res.json(req.body);
+    const membership = new Membership(req.body);
+    membership.save()
+    .then((result) => res.send(result))
+    .catch(err => console.log(err));
+})
+
+/*app.post('/previews', (req, res) => {
     //res.json(req.body)
     const preview = new Preview(
         req.body
@@ -101,7 +109,7 @@ app.post('/previews', (req, res) => {
     //const table = "previews";
     //const keys = Object.keys(req.body);
     //insert(req.body, keys, table);
-})
+})*/
 
 app.post('/medium', (req, res) => {
     res.json(req.body);
@@ -134,6 +142,14 @@ app.post('/sitesupdate', async (req, res) => {
         newUrl.save()
         .then((result) => res.send(result))
         .catch((err) => console.log(err));
+    } else if(req.body.curTable === "memberships") {
+        await Membership.deleteOne({ short: req.body.obj.short })
+        const newUrl = new Url(
+            req.body.obj
+        );
+        newUrl.save()
+        .then((result) => res.send(result))
+        .catch((err) => console.log(err));
     } else {
         await Url.findOneAndUpdate({ short: req.body.obj.short }, req.body.obj)
     }
@@ -148,8 +164,39 @@ app.post('/vcardsupdate', async (req, res) => {
         newVCard.save()
         .then((result) => res.send(result))
         .catch((err) => console.log(err));
+    } else if(req.body.curTable === "memberships") {
+        await Membership.deleteOne({ short: req.body.obj.short })
+        const newVCard = new VCard(
+            req.body.obj
+        );
+        newVCard.save()
+        .then((result) => res.send(result))
+        .catch((err) => console.log(err));
     } else {
         await VCard.findOneAndUpdate({ short: req.body.obj.short }, req.body.obj)
+    }
+})
+
+app.post('/membershipsupdate', async (req, res) => {
+    if (req.body.curTable === "urls") {
+        await Url.deleteOne({ short: req.body.obj.short })
+        const membership = new Membership(
+            req.body.obj
+        );
+        membership.save()
+        .then((result) => res.send(result))
+        .catch((err) => console.log(err));
+    } else if (req.body.curTable === "vcards") {
+        await VCard.deleteOne({ short: req.body.obj.short })
+        const membership = new Membership(
+            req.body.obj
+        );
+        membership.save()
+        .then((result) => res.send(result))
+        .catch((err) => console.log(err));
+    } 
+    else {
+        await Membership.findOneAndUpdate({ short: req.body.obj.short }, req.body.obj)
     }
 })
 
@@ -219,9 +266,26 @@ app.get('/fetchedvcards', async (req, res) => {
     }
 })
 
-app.get('/fetchedpreviews', async (req, res) => {
-    /*let previews = [];
+/*app.get('/fetchedpreviews', async (req, res) => {
+    let previews = [];
     const table = "previews";
+    const query = `SELECT * FROM ${table};`;
+    async function waitForData() {
+        let result = await getData(previews, query);
+        res.send(result);
+    }
+    waitForData();
+    try {
+        const data = await Preview.find();
+        res.json(data);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal server error' });
+    }
+})*/
+
+app.get('/fetchedmemberships', async (req, res) => {
+    /*let memberships = [];
+    const table = "memberships";
     const query = `SELECT * FROM ${table};`;
     async function waitForData() {
         let result = await getData(previews, query);
@@ -229,13 +293,12 @@ app.get('/fetchedpreviews', async (req, res) => {
     }
     waitForData();*/
     try {
-        const data = await Preview.find();
+        const data = await Membership.find();
         res.json(data);
     } catch (error) {
         res.status(500).json({ error: 'Internal server error' });
     }
 })
-
 
 
 
