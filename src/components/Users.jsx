@@ -33,7 +33,7 @@ const Users = () => {
     
 
     useEffect(() => {
-        fetch('http://localhost:3001/fetchedsites')
+        fetch('https://dynamic-styled-qrcode-generator.onrender.com/fetchedsites')
         .then(res => res.json())
         .then(data => {
           setSitesArr(data)
@@ -42,7 +42,7 @@ const Users = () => {
     }, [])
     
     useEffect(() => {
-        fetch('http://localhost:3001/fetchedvcards')
+        fetch('https://dynamic-styled-qrcode-generator.onrender.com/fetchedvcards')
         .then(res => res.json())
         .then(data => {
           setVCardsArr(data)
@@ -51,7 +51,7 @@ const Users = () => {
     }, [])
 
     useEffect(() => {
-      fetch('http://localhost:3001/fetchedmemberships')
+      fetch('https://dynamic-styled-qrcode-generator.onrender.com/fetchedmemberships')
       .then(res => res.json())
       .then(data => {
         setMembershipsArr(data)
@@ -187,7 +187,7 @@ const Users = () => {
       };
 
     const onUrlUpdate = async (curTable) => {
-      await Axios.post(`http://localhost:3001/sitesupdate/`, {
+      await Axios.post(`https://dynamic-styled-qrcode-generator.onrender.com/sitesupdate/`, {
         obj: {
           qrSvg: obj.qrSvg,
           short: obj.short,
@@ -202,7 +202,7 @@ const Users = () => {
     }
 
     const onMembershipUpdate = async (curTable) => {
-      await Axios.post(`http://localhost:3001/membershipsupdate/`, {
+      await Axios.post(`https://dynamic-styled-qrcode-generator.onrender.com/membershipsupdate/`, {
         obj: {
           qrSvg: obj.qrSvg,
           short: obj.short,
@@ -221,7 +221,7 @@ const Users = () => {
       let convertedPhoto;
       if (photo) {
         convertedPhoto = await convToBase64(photo)
-        await Axios.post('http://localhost:3001/vcardsupdate/', {
+        await Axios.post('https://dynamic-styled-qrcode-generator.onrender.com/vcardsupdate/', {
           obj: {
             qrSvg: obj.qrSvg,
             short: obj.short,
@@ -244,7 +244,7 @@ const Users = () => {
       }
       else {
         convertedPhoto = obj.photo
-        await Axios.post('http://localhost:3001/vcardsupdate/', {
+        await Axios.post('https://dynamic-styled-qrcode-generator.onrender.com/vcardsupdate/', {
           obj: {
             qrSvg: obj.qrSvg,
             short: obj.short,
