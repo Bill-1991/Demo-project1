@@ -90,8 +90,8 @@ app.post('/vcards', (req, res) => {
 })
 
 app.post('/memberships', (req, res) => {
-    res.json(req.body);
     const membership = new Membership(req.body);
+    
     membership.save()
     .then((result) => res.send(result))
     .catch(err => console.log(err));

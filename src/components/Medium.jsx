@@ -12,6 +12,7 @@ export default function Medium({ qrParam }) {
         const [fileName, setFileName] = useState("")
         const [sitesLoading, setSitesLoading] = useState(true)
         const [vCardsLoading, setVCardsLoading] = useState(true)
+        const [membershipsLoading, setMembershipsLoading] = useState(true)
         //let path = useLocation()
         //const [previewLoading, setPreviewLoading] = useState(true)
 
@@ -95,6 +96,29 @@ export default function Medium({ qrParam }) {
                 setVCardsLoading(false)
             })
           }, [qrParam])
+
+          useEffect(() => {
+            fetch('http://localhost:3001/fetchedmemberships')
+            .then(res => res.json())
+            .then(data => {
+                if (data.length) {
+                    let obj = data.filter(dbMembership => dbMembership.short === qrParam)
+                    let table = "memberships"
+                    if (obj.length) {
+                        setObject(obj)
+                        table = "memberships";
+                        Axios.post('http://localhost:3001/medium', {
+                            name: obj[0].short,
+                            table: table
+                        })
+                        .then((res, err) => {
+                            if (err) return err;
+                        })
+                    }
+                }
+                setMembershipsLoading(false)
+            })
+          }, [qrParam])
         
           /*useEffect(() => {
             fetch('http://localhost:3001/fetchedpreviews')
@@ -124,14 +148,17 @@ export default function Medium({ qrParam }) {
 
     //const [params]  = useSearchParams()
     //const name = "https://" + params.get("next")
-    if (sitesLoading || vCardsLoading) return <h1>Loading...</h1>
+    if (sitesLoading || vCardsLoading || membershipsLoading) return <h1>Loading...</h1>
     return(
         <div className="medium">
             {
-                object[0] ?
+                object[0].firstName ?
                 <VcardUi curVCard={object[0]} firstName={object[0].firstName} lastName={object[0].lastName} title={object[0].title} email={object[0].email} 
                 addressChange={addressChange} tel={object[0].phone} address={object[0].address} notes={object[0].notes} contactUrl={object[0].website} photo={object[0].photo} 
                 fileName={fileName} fileNameChange={fileNameChange} downloadVcard={downloadVcard} />
+                :
+                object[0].name ? 
+                <h1>Memberships</h1>
                 :
                 <h1>Not Found</h1>
             }

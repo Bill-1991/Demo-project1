@@ -8,13 +8,16 @@ import './Users.css';
 const Users = () => {
     const [loadingSites, setLoadingSites] = useState(true)
     const [loadingVCards, setLoadingVCards] = useState(true)
+    const [loadingMemberships, setLoadingMemberships] = useState(true)
     const [sitesArr, setSitesArr] = useState([])
     const [vCardsArr, setVCardsArr] = useState([])
+    const [membershipsArr, setMembershipsArr] = useState([])
     const [edit, setEdit] = useState(false)
     const [obj, setObj] = useState({})
     const [curTable, setCurTable] = useState("")
     const [urlForm, setUrlForm] = useState(null)
     const [vCardForm, setVCardForm] = useState(null)
+    const [membershipForm, setMembershipForm] = useState(null)
     const [url, setUrl] = useState("");
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -25,6 +28,8 @@ const Users = () => {
     const [photo, setPhoto] = useState(null)
     const [tel, setTel] = useState("")
     const [rawAddress, setRawAddress] = useState("")
+    const [name, setName] = useState("")
+    const [expires, setExpires] = useState("");
     
 
     useEffect(() => {
@@ -45,6 +50,15 @@ const Users = () => {
         })
     }, [])
 
+    useEffect(() => {
+      fetch('http://localhost:3001/fetchedmemberships')
+      .then(res => res.json())
+      .then(data => {
+        setMembershipsArr(data)
+        setLoadingMemberships(false)
+      })
+  }, [])
+
 
     const onEdit = (id, table) => {
         setEdit(true)
@@ -53,11 +67,18 @@ const Users = () => {
             object = sitesArr.filter(name => name._id === id)[0]
             setUrlForm(true)
             setVCardForm(false)
-        } else {
+            setMembershipForm(false)
+        } else if (table === "vcards") {
             object = vCardsArr.filter(name => name._id === id)[0]
             setUrlForm(false)
             setVCardForm(true)
-        }
+            setMembershipForm(false)
+        } else if (table === "memberships") {
+          object = membershipsArr.filter(name => name._id === id)[0]
+          setUrlForm(false)
+          setVCardForm(false)
+          setMembershipForm(true)
+      }
         setCurTable(table)
         setObj(object)
     }
@@ -69,11 +90,19 @@ const Users = () => {
     const selectUrlForm = () => {
         setVCardForm(false)
         setUrlForm(true)
+        setMembershipForm(false)
     }
 
     const selectVCardForm = () => {
         setVCardForm(true)
         setUrlForm(false)
+        setMembershipForm(false)
+    }
+
+    const selectMembershipForm = () => {
+      setMembershipForm(true)
+      setVCardForm(false)
+      setUrlForm(false)
     }
 
     const onUrlChange = (event) => {
@@ -116,6 +145,14 @@ const Users = () => {
         setRawAddress(e.target.value)
       }
 
+      const onNameChange = (e) => {
+        setName(e.target.value)
+      }
+
+      const onExpiresChange = (e) => {
+        setExpires(e.target.value)
+      }
+
       function resizeImage(base64Str) {
         return new Promise(resolve => {
           let img = new Image();
@@ -155,6 +192,22 @@ const Users = () => {
           qrSvg: obj.qrSvg,
           short: obj.short,
           urlName: url,
+        },
+        curTable: curTable,
+      })
+      .then((res, err) => {
+        if (err) console.log(err);
+      })
+      window.location.reload()
+    }
+
+    const onMmebershipUpdate = async (curTable) => {
+      await Axios.post(`http://localhost:3001/membershipsupdate/`, {
+        obj: {
+          qrSvg: obj.qrSvg,
+          short: obj.short,
+          name: url,
+          expires_at: expires
         },
         curTable: curTable,
       })
@@ -213,7 +266,7 @@ const Users = () => {
       }
     }
 
-    if (loadingSites || loadingVCards ) return <h1>Loading...</h1>
+    if (loadingSites || loadingVCards || loadingMemberships) return <h1>Loading...</h1>
     return (  
         <div id="/users" className="users">
             {edit === true ? <EditQr obj={obj} edit={edit} curTable={curTable} closeEdit={closeEdit} selectUrlForm={selectUrlForm} 
@@ -221,7 +274,9 @@ const Users = () => {
             firstNameChange={firstNameChange} lastName={lastName} lastNameChange={lastNameChange} title={title} titleChange={titleChange} 
             email={email} emailChange={emailChange} contactUrl={contactUrl} contactUrlChange={contactUrlChange} rawAddress={rawAddress} 
             rawAddressChange={rawAddressChange}  tel={tel} telChange={telChange} notes={notes} notesChange={notesChange} photo={photo}
-            selectImg={selectImg} onUrlUpdate={onUrlUpdate} onVCardUpdate={onVCardUpdate} /> : 
+            selectImg={selectImg} onUrlUpdate={onUrlUpdate} onVCardUpdate={onVCardUpdate} onMmebershipUpdate={onMmebershipUpdate} 
+            selectMembershipForm={selectMembershipForm} membershipForm={membershipForm} onNameChange={onNameChange} 
+            onExpiresChange={onExpiresChange} name={name} expires={expires} /> : 
             <>
             <div className="fetchsites">
                 <h2>Sites</h2>
@@ -254,8 +309,24 @@ const Users = () => {
                     }
                   </div> :
                   <h3>No v-Cards yet</h3>
-                }
-                
+                }    
+            </div>
+            <hr />
+            <div className="fetchmemberships">
+                <h2>Membership Cards</h2>
+                {
+                  membershipsArr.length ? 
+                  <div className="membershipscard">
+                    {
+                        membershipsArr.map(membership => <div className="fetchmembership" key={membership._id}>
+                            <img src={`data:image/svg+xml;utf8,${encodeURIComponent(membership.qrSvg.replace(`<?xml version="1.0" standalone="no"?>`, ""))}`} />
+                            <p>{membership.name}</p>
+                            <button onClick={() => onEdit(membership._id, "memberships")} >Edit Qr</button>
+                        </div>)
+                    }
+                  </div> :
+                  <h3>No Mmeberships yet</h3>
+                }    
             </div>
         </> 
         }

@@ -1,4 +1,4 @@
-.wifi {
+.memberships {
     display: grid;
     grid-template-columns: 30% 70%;
     align-items: center;
@@ -6,14 +6,14 @@
     background-color: rgba(120, 120, 120, 0.1);
 }
 
-.wifi p {
+.memberships p {
     font-size: 16px;
     font-weight: 700;
     font-style: oblique;
     color: rgba(0,212,255,1);
 }
 
-.wifi input {
+.memberships input {
     border-radius: 2%;
     border-color: black;
     background-color: inherit;

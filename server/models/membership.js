@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const membershipSchema = new Schema({
+    qrSvg:{
+        type: String,
+        required: true
+    },
     short: {
         type: String,
         required: true
@@ -17,6 +21,6 @@ const membershipSchema = new Schema({
 
 }, { timestamps: true });
 
-const dbMembership = mongoose.model('preview', membershipSchema);
+const dbMembership = mongoose.model('memberships', membershipSchema);
 
 export default dbMembership;

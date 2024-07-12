@@ -6,9 +6,10 @@ import QRCodeStyling from "qr-code-styling";
 import Customize from "./components/Customize";
 import Url from "./components/Url";
 import Vcard from "./components/Vcard";
-import Wifi from "./components/Wifi";
+//import Memberships from "./components/Memberships";
 import Medium from "./components/Medium";
 import Users from "./components/Users";
+import Memberships from "./components/Memberships";
 
 const qrCode = new QRCodeStyling({
   width: 300,
@@ -115,7 +116,9 @@ export default function App() {
   const [customize, setCustomize] = useState(true)
   const [urls, setUrls] = useState(true)
   const [vCards, setVCards] = useState(false)
-  const [wifi, setWifi]= useState(false)
+  const [memberships, setMemberships]= useState(false)
+  const [name, setName]= useState("")
+  const [expires, setExpires]= useState("")
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [title, setTitle] = useState("")
@@ -126,8 +129,9 @@ export default function App() {
   const [tel, setTel] = useState("")
   const [rawAddress, setRawAddress] = useState("")
   const [backRoute, setBackRoute] = useState("sites")
-  let siteUrl = `https://dynamic-styled-qrcode-generator-1.onrender.com/${shortUrl}`
-  let vCardUrl = `https://dynamic-styled-qrcode-generator-1.onrender.com/${shortUrl}`
+  let siteUrl = `http://localhost:5173/${shortUrl}`
+  let vCardUrl = `http://localhost:5173/${shortUrl}`
+  let membershipUrl = `http://localhost:5173/${shortUrl}`
   const ref = useRef(null);
   
   //vcards?id=${vCardId}&preview=${preview}
@@ -317,7 +321,7 @@ export default function App() {
     if (urls === false) {
       setUrls(true)
       setVCards(false)
-      setWifi(false)
+      setMemberships(false)
       setBackRoute("sites")
     }
   }
@@ -326,17 +330,26 @@ export default function App() {
     if (vCards === false) {
       setUrls(false)
       setVCards(true)
-      setWifi(false)
+      setMemberships(false)
       setBackRoute("vcards")
     }
   }
 
-  const onWifiChange = () => {
-    if (wifi === false) {
+  const onMembershipsChange = () => {
+    if (memberships === false) {
       setUrls(false)
       setVCards(false)
-      setWifi(true)
+      setMemberships(true)
+      setBackRoute("memberships")
     }
+  }
+
+  const onMembershipNameChange = (e) => {
+    setName(e.target.value)
+  }
+
+  const onExpiresChange = (e) => {
+    setExpires(e.target.value)
   }
   
   const onUrlChange = (event) => {
@@ -623,6 +636,22 @@ export default function App() {
         });
 
         setShortUrl(produceShortUrl())
+      } else if (backRoute === "memberships") {
+        Axios.post(`http://localhost:3001/${backRoute}/`, {
+          qrSvg: qrBlob,
+          short: shortUrl,
+          name: name,
+          expires_at: expires
+        })
+        .then((res, err) => {
+          if (err) console.log(err);
+        });
+
+        qrCode.download({
+          extension: fileExt
+        });
+
+        setShortUrl(produceShortUrl())
       } 
     }
     
@@ -648,7 +677,7 @@ export default function App() {
                 <div className="categoryBtns">
                   <button onClick={ onUrlsChange }>Urls</button>
                   <button onClick={ onVCardsChange }>V-Cards</button>
-                  <button onClick={ onWifiChange }>Wi-fi</button>
+                  <button onClick={ onMembershipsChange }>Wi-fi</button>
                 </div>
                 <div className="category">
                   { urls === true ? <Url url={url} siteUrl={siteUrl} onUrlChange={onUrlChange} /> : 
@@ -657,7 +686,8 @@ export default function App() {
                   contactUrl={contactUrl} contactUrlChange={contactUrlChange} tel={tel} telChange={telChange} rawAddress={rawAddress}
                   rawAddressChange={rawAddressChange} notes={notes} notesChange={notesChange} selectImg={selectImg} 
                   /> 
-                  : wifi === true ? <Wifi /> :
+                  : memberships === true ? <Memberships membershipUrl={membershipUrl} membershipName={name} expires={expires} 
+                  onExpiresChange={onExpiresChange} onMembershipNameChange={onMembershipNameChange}  /> :
                   undefined }
                 </div>
                 <div className="customize">
