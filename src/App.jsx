@@ -685,7 +685,7 @@ export default function App() {
             firstNameChange={firstNameChange} lastName={lastName} lastNameChange={lastNameChange} title={title} titleChange={titleChange} 
             email={email} emailChange={emailChange} contactUrl={contactUrl} contactUrlChange={contactUrlChange} rawAddress={rawAddress} 
             rawAddressChange={rawAddressChange}  tel={tel} telChange={telChange} notes={notes} notesChange={notesChange} photo={photo}
-            selectImg={selectImg} loggedIn={loggedIn} /> } />
+            selectImg={selectImg} /> } />
           { qrParam && <Route exact path={qrParam} element={<Medium qrParam={qrParam} />} /> }
       </Routes>
     </BrowserRouter>
