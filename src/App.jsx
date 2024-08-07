@@ -626,7 +626,7 @@ export default function App() {
         <Route exact path="/*" element={ 
             <div className="App">
               <div className="allqr">
-                <button><Link to='/users?user=example_user'>Log in as Admin</Link></button> 
+                <button><Link to='/users?user=example_user' reloadDocument>Log in as Admin</Link></button> 
                 <div className="qr" style={{ overflow: "auto"}} ref={ref} />
                 <div className="download">
                   <select onChange={onExtensionChange} value={fileExt}>
@@ -681,7 +681,7 @@ export default function App() {
               </div>
             </div>
            } />
-          <Route exact path="/users" element={ <Users reloadDocument url={url} onUrlChange={onUrlChange} firstName={firstName} 
+          <Route exact path="/users" element={ <Users url={url} onUrlChange={onUrlChange} firstName={firstName} 
             firstNameChange={firstNameChange} lastName={lastName} lastNameChange={lastNameChange} title={title} titleChange={titleChange} 
             email={email} emailChange={emailChange} contactUrl={contactUrl} contactUrlChange={contactUrlChange} rawAddress={rawAddress} 
             rawAddressChange={rawAddressChange}  tel={tel} telChange={telChange} notes={notes} notesChange={notesChange} photo={photo}
