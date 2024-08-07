@@ -1,15 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import "./App.css";
 import Axios from "axios";
 import QRCodeStyling from "qr-code-styling";
 import Customize from "./components/Customize";
 import Url from "./components/Url";
 import Vcard from "./components/Vcard";
-//import Memberships from "./components/Memberships";
 import Medium from "./components/Medium";
 import Users from "./components/Users";
-import Memberships from "./components/Memberships";
+
 
 const qrCode = new QRCodeStyling({
   width: 300,
@@ -66,18 +65,18 @@ const qrCode = new QRCodeStyling({
 });
 
 export default function App() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const userParam = urlParams.get('user');
+  //const urlParams = new URLSearchParams(window.location.search);
+  //const userParam = urlParams.get('user');
   const qrParam = window.location.pathname.replace("/", "")
   const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
     "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
   ]
-  const user = import.meta.env.VITE_REACT_APP_USER;
+  //const user = import.meta.env.VITE_REACT_APP_USER;
   const [shortUrl, setShortUrl] = useState("")
   const [width, setWidth] = useState(300)
   const [height, setHeight] = useState(300)
   const [margin, setMargin] = useState(0)
-  const [url, setUrl] = useState("lynxweb.eu");
+  const [url, setUrl] = useState("google.com");
   const [fileExt, setFileExt] = useState("svg");
   const [image, setImage] = useState(null)
   const [dotsStyle, setDotsStyle] = useState("square")
@@ -116,9 +115,6 @@ export default function App() {
   const [customize, setCustomize] = useState(true)
   const [urls, setUrls] = useState(true)
   const [vCards, setVCards] = useState(false)
-  const [memberships, setMemberships]= useState(false)
-  const [name, setName]= useState("")
-  const [expires, setExpires]= useState("")
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [title, setTitle] = useState("")
@@ -129,10 +125,16 @@ export default function App() {
   const [tel, setTel] = useState("")
   const [rawAddress, setRawAddress] = useState("")
   const [backRoute, setBackRoute] = useState("sites")
-  let siteUrl = `https://dynamic-styled-qrcode-generator-1.onrender.com/${shortUrl}`
-  let vCardUrl = `https://dynamic-styled-qrcode-generator-1.onrender.com/${shortUrl}`
-  let membershipUrl = `https://dynamic-styled-qrcode-generator-1.onrender.com/${shortUrl}`
-  const ref = useRef(null);
+  let loggedIn = false
+  let siteUrl = `http://localhost:5173/${shortUrl}`
+  let vCardUrl = `http://localhost:5173/${shortUrl}`
+  let ref = useRef(null);
+
+  console.log(loggedIn)
+  if (loggedIn) {
+    loggedIn = false
+    window.location.reload()
+  }
   
   //vcards?id=${vCardId}&preview=${preview}
   //vcards?id=${previewId}&preview=${preview}
@@ -295,10 +297,6 @@ export default function App() {
     setRawAddress(e.target.value)
   }
 
-  const onNameChange = (e) => {
-    setName(e.target.value)
-  }
-
   const convToBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
@@ -337,19 +335,6 @@ export default function App() {
       setMemberships(false)
       setBackRoute("vcards")
     }
-  }
-
-  const onMembershipsChange = () => {
-    if (memberships === false) {
-      setUrls(false)
-      setVCards(false)
-      setMemberships(true)
-      setBackRoute("memberships")
-    }
-  }
-
-  const onExpiresChange = (e) => {
-    setExpires(e.target.value)
   }
   
   const onUrlChange = (event) => {
@@ -597,7 +582,7 @@ export default function App() {
       let qrBlob = await qrText.then(value => value.text().then(value => value));
       
       if (backRoute === "sites") {
-        Axios.post(`https://dynamic-styled-qrcode-generator.onrender.com/${backRoute}/`, {
+        Axios.post(`http://localhost:3001/${backRoute}/`, {
           qrSvg: qrBlob,
           short: shortUrl,
           urlName: url
@@ -614,7 +599,7 @@ export default function App() {
       }
       
       else if (backRoute === "vcards") {
-        Axios.post(`https://dynamic-styled-qrcode-generator.onrender.com/${backRoute}/`, {
+        Axios.post(`http://localhost:3001/${backRoute}/`, {
           qrSvg: qrBlob,
           short: shortUrl,
           firstName: firstName,
@@ -636,22 +621,6 @@ export default function App() {
         });
 
         setShortUrl(produceShortUrl())
-      } else if (backRoute === "memberships") {
-        Axios.post(`https://dynamic-styled-qrcode-generator.onrender.com/${backRoute}/`, {
-          qrSvg: qrBlob,
-          short: shortUrl,
-          name: name,
-          expires_at: expires
-        })
-        .then((res, err) => {
-          if (err) console.log(err);
-        });
-
-        qrCode.download({
-          extension: fileExt
-        });
-
-        setShortUrl(produceShortUrl())
       } 
     }
     
@@ -661,9 +630,10 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="*" element={ 
+        <Route exact path="/*" element={ 
             <div className="App">
               <div className="allqr">
+                <button><Link to='/users?user=example_user'>Log in as Admin</Link></button> 
                 <div className="qr" style={{ overflow: "auto"}} ref={ref} />
                 <div className="download">
                   <select onChange={onExtensionChange} value={fileExt}>
@@ -671,24 +641,21 @@ export default function App() {
                   </select>
                   <button onClick={onDownloadClick}>Download</button>
                 </div>
+                
               </div>
               
               <div className="categories">
                 <div className="categoryBtns">
                   <button onClick={ onUrlsChange }>Urls</button>
                   <button onClick={ onVCardsChange }>V-Cards</button>
-                  <button onClick={ onMembershipsChange }>Wi-fi</button>
                 </div>
                 <div className="category">
                   { urls === true ? <Url url={url} siteUrl={siteUrl} onUrlChange={onUrlChange} /> : 
-                  vCards === true ? <Vcard vCardUrl={vCardUrl} firstName={firstName} firstNameChange={firstNameChange} 
+                  <Vcard vCardUrl={vCardUrl} firstName={firstName} firstNameChange={firstNameChange} 
                   lastName={lastName} lastNameChange={lastNameChange} title={title} titleChange={titleChange} email={email} emailChange={emailChange} 
                   contactUrl={contactUrl} contactUrlChange={contactUrlChange} tel={tel} telChange={telChange} rawAddress={rawAddress}
                   rawAddressChange={rawAddressChange} notes={notes} notesChange={notesChange} selectImg={selectImg} 
-                  /> 
-                  : memberships === true ? <Memberships membershipUrl={membershipUrl} expires={expires} 
-                  onExpiresChange={onExpiresChange} name={name} onNameChange={onNameChange}  /> :
-                  undefined }
+                  /> }
                 </div>
                 <div className="customize">
                   <button onClick={onCustomizeChange}>Customize QR</button>
@@ -721,7 +688,11 @@ export default function App() {
               </div>
             </div>
            } />
-          <Route exact path="/users" element={user === userParam ? <Users /> : <h1>Not signed in</h1> } />
+          <Route exact path="/users" element={ <Users url={url} onUrlChange={onUrlChange} firstName={firstName} 
+            firstNameChange={firstNameChange} lastName={lastName} lastNameChange={lastNameChange} title={title} titleChange={titleChange} 
+            email={email} emailChange={emailChange} contactUrl={contactUrl} contactUrlChange={contactUrlChange} rawAddress={rawAddress} 
+            rawAddressChange={rawAddressChange}  tel={tel} telChange={telChange} notes={notes} notesChange={notesChange} photo={photo}
+            selectImg={selectImg} loggedIn={loggedIn} /> } />
           { qrParam && <Route exact path={qrParam} element={<Medium qrParam={qrParam} />} /> }
       </Routes>
     </BrowserRouter>
