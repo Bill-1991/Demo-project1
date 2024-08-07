@@ -125,16 +125,9 @@ export default function App() {
   const [tel, setTel] = useState("")
   const [rawAddress, setRawAddress] = useState("")
   const [backRoute, setBackRoute] = useState("sites")
-  let loggedIn = false
   let siteUrl = `http://localhost:5173/${shortUrl}`
   let vCardUrl = `http://localhost:5173/${shortUrl}`
   let ref = useRef(null);
-
-  console.log(loggedIn)
-  if (loggedIn) {
-    loggedIn = false
-    window.location.reload()
-  }
   
   //vcards?id=${vCardId}&preview=${preview}
   //vcards?id=${previewId}&preview=${preview}
@@ -688,7 +681,7 @@ export default function App() {
               </div>
             </div>
            } />
-          <Route exact path="/users" element={ <Users url={url} onUrlChange={onUrlChange} firstName={firstName} 
+          <Route exact path="/users" element={ <Users reloadDocument url={url} onUrlChange={onUrlChange} firstName={firstName} 
             firstNameChange={firstNameChange} lastName={lastName} lastNameChange={lastNameChange} title={title} titleChange={titleChange} 
             email={email} emailChange={emailChange} contactUrl={contactUrl} contactUrlChange={contactUrlChange} rawAddress={rawAddress} 
             rawAddressChange={rawAddressChange}  tel={tel} telChange={telChange} notes={notes} notesChange={notesChange} photo={photo}

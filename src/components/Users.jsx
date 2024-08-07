@@ -6,7 +6,7 @@ import EditQr from "./EditQr";
 import './Users.css';
 
 
-const Users = ({loggedIn}) => {
+const Users = () => {
     const [loadingSites, setLoadingSites] = useState(true)
     const [loadingVCards, setLoadingVCards] = useState(true)
     const [sitesArr, setSitesArr] = useState([])
