@@ -160,8 +160,9 @@ const Users = () => {
       })
       .then((res, err) => {
         if (err) console.log(err);
+        window.location.reload()
       })
-      window.location()
+      
     }
 
 
