@@ -39,12 +39,15 @@ body{
   width: 300px;
   background-color: bisque;
   color: black;
+  font-size: 16;
+  font-weight: 400;
 }
 
 .login:hover{
   background-color: black;
   color: bisque;
   font-size: 20px;
+  font-weight: 800;
 }
 
 .download {
