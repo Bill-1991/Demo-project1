@@ -166,7 +166,6 @@ const Users = () => {
 
 
     const onVCardUpdate = async (curTable) => {
-      console.log(curTable)
       let convertedPhoto;
       if (photo) {
         convertedPhoto = await convToBase64(photo)
