@@ -29,7 +29,8 @@ body{
 
 .allqr {
   display: grid;
-  max-height: 400px;
+  height: 400;
+  max-height: 500px;
   justify-content: center;
   position: sticky;
   top: 0;
