@@ -125,6 +125,7 @@ app.post('/medium', (req, res) => {
 })
 
 app.post('/sitesupdate', async (req, res) => {
+    console.log(req.body)
     if (req.body.curTable === "vcards") {
         await VCard.deleteOne({ short: req.body.obj.short })
         const newUrl = new Url(

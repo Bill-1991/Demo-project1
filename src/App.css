@@ -39,7 +39,7 @@ body{
 .login{
   width: 300px;
   background-color: white;
-  border: 2px;
+  border-width: 3px;
   border-color: black;
   
 }

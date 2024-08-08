@@ -316,7 +316,6 @@ export default function App() {
     if (urls === false) {
       setUrls(true)
       setVCards(false)
-      setMemberships(false)
       setBackRoute("sites")
     }
   }
@@ -325,7 +324,6 @@ export default function App() {
     if (vCards === false) {
       setUrls(false)
       setVCards(true)
-      setMemberships(false)
       setBackRoute("vcards")
     }
   }
@@ -633,7 +631,7 @@ export default function App() {
                   </select>
                   <button onClick={onDownloadClick}>Download</button>
                 </div>
-                <button className="login"><Link to="/users" reloadDocument >Log in</Link></button>
+                <button className="login"><Link className="link" to="/users" reloadDocument >Log in</Link></button>
               </div>
               
               <div className="categories">
