@@ -680,11 +680,7 @@ export default function App() {
               </div>
             </div>
            } />
-          <Route exact path="/users" element={ <Users url={url} onUrlChange={onUrlChange} firstName={firstName} 
-            firstNameChange={firstNameChange} lastName={lastName} lastNameChange={lastNameChange} title={title} titleChange={titleChange} 
-            email={email} emailChange={emailChange} contactUrl={contactUrl} contactUrlChange={contactUrlChange} rawAddress={rawAddress} 
-            rawAddressChange={rawAddressChange}  tel={tel} telChange={telChange} notes={notes} notesChange={notesChange} photo={photo}
-            selectImg={selectImg} /> } />
+          <Route exact path="/users" element={ <Users /> } />
           { qrParam && <Route exact path={qrParam} element={<Medium qrParam={qrParam} />} /> }
       </Routes>
     </BrowserRouter>
