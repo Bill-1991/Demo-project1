@@ -29,7 +29,7 @@ const Users = () => {
     
 
     useEffect(() => {
-        fetch('https://demo-project1-ms77.onrender.com/fetchedsites')
+        fetch('http://localhost:3001/fetchedsites')
         .then(res => res.json())
         .then(data => {
           console.log(data)
@@ -39,7 +39,7 @@ const Users = () => {
     }, [])
     
     useEffect(() => {
-        fetch('https://demo-project1-ms77.onrender.com/fetchedvcards')
+        fetch('http://localhost:3001/fetchedvcards')
         .then(res => res.json())
         .then(data => {
           setVCardsArr(data)
@@ -151,7 +151,7 @@ const Users = () => {
       };
 
     const onUrlUpdate = (curTable) => {
-      Axios.post(`https://demo-project1-ms77.onrender.com/sitesupdate/`, {
+      Axios.post(`http://localhost:3001/sitesupdate/`, {
         obj: {
           qrSvg: obj.qrSvg,
           short: obj.short,
@@ -170,7 +170,7 @@ const Users = () => {
       let convertedPhoto;
       if (photo) {
         convertedPhoto = await convToBase64(photo)
-        Axios.post('https://demo-project1-ms77.onrender.com/vcardsupdate/', {
+        Axios.post('http://localhost:3001/vcardsupdate/', {
           obj: {
             qrSvg: obj.qrSvg,
             short: obj.short,
@@ -193,7 +193,7 @@ const Users = () => {
       }
       else {
         convertedPhoto = obj.photo
-        Axios.post('https://demo-project1-ms77.onrender.com/vcardsupdate/', {
+        Axios.post('http://localhost:3001/vcardsupdate/', {
           obj: {
             qrSvg: obj.qrSvg,
             short: obj.short,

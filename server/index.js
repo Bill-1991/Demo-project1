@@ -237,6 +237,6 @@ app.get('/fetchedvcards', async (req, res) => {
 })*/
 
 
-app.listen(PORT, () => {
-    console.log(`listening on port, ${PORT}`)
+app.listen("3001", () => {
+    console.log(`listening on port, 3001`)
 })
