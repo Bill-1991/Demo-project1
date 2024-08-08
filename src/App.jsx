@@ -625,8 +625,7 @@ export default function App() {
       <Routes>
         <Route exact path="/*" element={ 
             <div className="App">
-              <div className="allqr">
-                <button><Link to='/users' reloadDocument>Log in as Admin</Link></button> 
+              <div className="allqr"> 
                 <div className="qr" style={{ overflow: "auto"}} ref={ref} />
                 <div className="download">
                   <select onChange={onExtensionChange} value={fileExt}>
@@ -634,7 +633,7 @@ export default function App() {
                   </select>
                   <button onClick={onDownloadClick}>Download</button>
                 </div>
-                
+                <button><Link to='/users' reloadDocument>Log in as Admin</Link></button>
               </div>
               
               <div className="categories">
