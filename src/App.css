@@ -38,7 +38,13 @@ body{
 
 .login{
   width: 300px;
-  background-color: bisque;
+  background-color: white;
+  border: 2px;
+  border-color: black;
+  
+}
+
+.login .link{
   color: black;
   font-size: 16;
   font-weight: 400;
@@ -46,8 +52,10 @@ body{
 
 .login:hover{
   background-color: black;
+}
+
+.login:hover .link{
   color: white !important;
-  scale: 1.1;
   font-weight: 800;
 }
 
