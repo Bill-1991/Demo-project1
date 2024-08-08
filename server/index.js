@@ -17,10 +17,7 @@ dotenv.config({ path: '../.env' });
 
 const uri = process.env.MONGO_URI
 
-mongoose.connect(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-    })
+mongoose.connect(uri)
     .then(() => console.log("connected"))
     .catch(err => console.log(err));
 
