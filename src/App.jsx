@@ -633,7 +633,7 @@ export default function App() {
                   </select>
                   <button onClick={onDownloadClick}>Download</button>
                 </div>
-                <button className="login"><Link to="/users" reloadDocument ></Link></button>
+                <button className="login"><Link to="/users" reloadDocument >Log in</Link></button>
               </div>
               
               <div className="categories">
