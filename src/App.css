@@ -46,8 +46,8 @@ body{
 
 .login:hover{
   background-color: black;
-  color: bisque;
-  font-size: 20px;
+  color: white !important;
+  scale: 1.1;
   font-weight: 800;
 }
 
