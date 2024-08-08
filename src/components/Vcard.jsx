@@ -52,7 +52,6 @@ const Vcard = ({ vCardUrl, firstName, firstNameChange, lastName, lastNameChange,
           </Form.Group>
         </Form>
         { edit && <button className='save' onClick={() => onVCardUpdate(curTable)} >Save</button> }
-        { edit && <p>*There is a bug here that doesn't reload the page after saving. Reload the page manually till i fix it</p>}
       </div>
     )
 }

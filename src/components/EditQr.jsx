@@ -10,6 +10,7 @@ const EditQr = ({ obj, curTable, edit, closeEdit, selectUrlForm, selectVCardForm
     return (
         <div className='edit'>
             <button className='closeEdit' onClick={closeEdit}>X</button>
+            <p>*If the page doesn't reload after updating vcard content, then reload it manually to see the changes</p>
             <div className="forms">
                 <button onClick={selectUrlForm}>Url</button>
                 <button onClick={selectVCardForm}>vCard</button>
