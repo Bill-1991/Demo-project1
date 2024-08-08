@@ -623,7 +623,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/*" element={ 
+        <Route exact path="*" element={ 
             <div className="App">
               <div className="allqr"> 
                 <div className="qr" style={{ overflow: "auto"}} ref={ref} />
