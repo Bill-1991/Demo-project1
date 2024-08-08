@@ -32,7 +32,6 @@ const Users = () => {
         fetch('https://demo-project1-ms77.onrender.com/fetchedsites')
         .then(res => res.json())
         .then(data => {
-          console.log(data)
           setSitesArr(data)
           setLoadingSites(false)
         })

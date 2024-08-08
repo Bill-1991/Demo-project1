@@ -19,6 +19,13 @@ body{
   background-color: white;
 }
 
+.App .users{
+  background-color: black;
+  color: white;
+  font-size: 18px;
+  font-weight: 800;
+}
+
 .App input,
 .App select {
   border-width: 2px !important;
@@ -67,6 +74,10 @@ body{
 @media only screen and (max-width: 970px) {
   .App {
     display: block !important
+  }
+
+  .categories{
+    margin-top: 3rem;
   }
 
   .categoryBtns {
