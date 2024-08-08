@@ -149,8 +149,8 @@ const Users = () => {
         });
       };
 
-    const onUrlUpdate = (curTable) => {
-      Axios.post(`https://demo-project1-ms77.onrender.com/sitesupdate/`, {
+    const onUrlUpdate = async (curTable) => {
+      await Axios.post(`https://demo-project1-ms77.onrender.com/sitesupdate/`, {
         obj: {
           qrSvg: obj.qrSvg,
           short: obj.short,
@@ -170,7 +170,7 @@ const Users = () => {
       let convertedPhoto;
       if (photo) {
         convertedPhoto = await convToBase64(photo)
-        Axios.post('https://demo-project1-ms77.onrender.com/vcardsupdate/', {
+        await Axios.post('https://demo-project1-ms77.onrender.com/vcardsupdate/', {
           obj: {
             qrSvg: obj.qrSvg,
             short: obj.short,
@@ -193,7 +193,7 @@ const Users = () => {
       }
       else {
         convertedPhoto = obj.photo
-        Axios.post('https://demo-project1-ms77.onrender.com/vcardsupdate/', {
+        await Axios.post('https://demo-project1-ms77.onrender.com/vcardsupdate/', {
           obj: {
             qrSvg: obj.qrSvg,
             short: obj.short,
