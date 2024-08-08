@@ -65,13 +65,13 @@ const qrCode = new QRCodeStyling({
 });
 
 export default function App() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const userParam = urlParams.get('user');
+  //const urlParams = new URLSearchParams(window.location.search);
+  //const userParam = urlParams.get('user');
   const qrParam = window.location.pathname.replace("/", "")
   const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
     "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
   ]
-  const user = import.meta.env.VITE_REACT_APP_USER;
+  //const user = import.meta.env.VITE_REACT_APP_USER;
   const [shortUrl, setShortUrl] = useState("")
   const [width, setWidth] = useState(300)
   const [height, setHeight] = useState(300)
@@ -679,7 +679,7 @@ export default function App() {
               </div>
             </div>
            } />
-          <Route exact path="/users" element={ user === userParam ? <Users /> : <h1>Not Found</h1> } />
+          <Route exact path="/users" element={ <Users /> } />
           { qrParam && <Route exact path={qrParam} element={<Medium qrParam={qrParam} />} /> }
       </Routes>
     </BrowserRouter>
