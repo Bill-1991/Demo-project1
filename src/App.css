@@ -29,10 +29,22 @@ body{
 
 .allqr {
   display: grid;
-  max-height: 350px;
+  max-height: 400px;
   justify-content: center;
   position: sticky;
   top: 0;
+}
+
+.login{
+  width: 300px;
+  background-color: bisque;
+  color: black;
+}
+
+.login:hover{
+  background-color: black;
+  color: bisque;
+  font-size: 20px;
 }
 
 .download {
@@ -69,6 +81,10 @@ body{
     display: block !important
   }
 
+  .App .categories{
+    margin-top: 2rem;
+  }
+
   .categoryBtns {
     gap: 2rem;
   }
@@ -81,7 +97,7 @@ body{
   }
 
   .App .categories{
-    margin-top: 1.5rem;
+    margin-top: 3rem;
   }
 }
 
