@@ -69,10 +69,6 @@ body{
     display: block !important
   }
 
-  .categories{
-    margin-top: 3rem;
-  }
-
   .categoryBtns {
     gap: 2rem;
   }
