@@ -626,7 +626,7 @@ export default function App() {
         <Route exact path="/*" element={ 
             <div className="App">
               <div className="allqr">
-                <button><Link to='/users?user=example_user' reloadDocument>Log in as Admin</Link></button> 
+                <button><Link to='/users' reloadDocument>Log in as Admin</Link></button> 
                 <div className="qr" style={{ overflow: "auto"}} ref={ref} />
                 <div className="download">
                   <select onChange={onExtensionChange} value={fileExt}>
