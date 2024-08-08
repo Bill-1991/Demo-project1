@@ -125,8 +125,8 @@ export default function App() {
   const [tel, setTel] = useState("")
   const [rawAddress, setRawAddress] = useState("")
   const [backRoute, setBackRoute] = useState("sites")
-  let siteUrl = `http://localhost:5173/${shortUrl}`
-  let vCardUrl = `http://localhost:5173/${shortUrl}`
+  let siteUrl = `https://demo-project1-9big.onrender.com/${shortUrl}`
+  let vCardUrl = `https://demo-project1-9big.onrender.com/${shortUrl}`
   let ref = useRef(null);
   
   //vcards?id=${vCardId}&preview=${preview}
