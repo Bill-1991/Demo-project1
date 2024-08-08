@@ -633,7 +633,6 @@ export default function App() {
                   </select>
                   <button onClick={onDownloadClick}>Download</button>
                 </div>
-                <button className="users"><Link to="/users" reloadDocument>Log in as admin</Link></button>
               </div>
               
               <div className="categories">
