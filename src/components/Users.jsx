@@ -192,7 +192,7 @@ const Users = () => {
       }
       else {
         convertedPhoto = obj.photo
-        Axios.post('https://demo-project1-ms77.onrender.com/vcardsupdate/', {
+        await Axios.post('https://demo-project1-ms77.onrender.com/vcardsupdate/', {
           obj: {
             qrSvg: obj.qrSvg,
             short: obj.short,
