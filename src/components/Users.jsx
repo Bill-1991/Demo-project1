@@ -149,8 +149,8 @@ const Users = () => {
         });
       };
 
-    const onUrlUpdate = async (curTable) => {
-      await Axios.post(`https://demo-project1-ms77.onrender.com/sitesupdate/`, {
+    const onUrlUpdate = (curTable) => {
+      Axios.post(`https://demo-project1-ms77.onrender.com/sitesupdate/`, {
         obj: {
           qrSvg: obj.qrSvg,
           short: obj.short,
@@ -160,6 +160,8 @@ const Users = () => {
       })
       .then((res, err) => {
         if (err) console.log(err);
+      })
+      .finally(() => {
         window.location.reload()
       })
       
