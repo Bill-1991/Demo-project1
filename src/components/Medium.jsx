@@ -45,7 +45,7 @@ export default function Medium({ qrParam }) {
           }
 
         useEffect(() => {
-            fetch('http://localhost:3001/fetchedsites')
+            fetch('https://demo-project1-ms77.onrender.com/fetchedsites')
             .then(res => res.json())
             .then(async data => {
                 if (data.length) {
@@ -55,7 +55,7 @@ export default function Medium({ qrParam }) {
                         setObject(obj)
                         table = "urls";
                         let redir = obj[0].urlName
-                        await Axios.post('http://localhost:3001/medium', {
+                        await Axios.post('https://demo-project1-ms77.onrender.com/medium', {
                             name: obj[0].short,
                             table: table
                         })
@@ -74,7 +74,7 @@ export default function Medium({ qrParam }) {
           }, [qrParam])
         
           useEffect(() => {
-            fetch('http://localhost:3001/fetchedvcards')
+            fetch('https://demo-project1-ms77.onrender.com/fetchedvcards')
             .then(res => res.json())
             .then(data => {
                 if (data.length) {
@@ -83,7 +83,7 @@ export default function Medium({ qrParam }) {
                     if (obj.length) {
                         setObject(obj)
                         table = "vcards";
-                        Axios.post('http://localhost:3001/medium', {
+                        Axios.post('https://demo-project1-ms77.onrender.com/medium', {
                             name: obj[0].short,
                             table: table
                         })

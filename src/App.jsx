@@ -575,7 +575,7 @@ export default function App() {
       let qrBlob = await qrText.then(value => value.text().then(value => value));
       
       if (backRoute === "sites") {
-        Axios.post(`http://localhost:3001/${backRoute}/`, {
+        Axios.post(`https://demo-project1-ms77.onrender.com/${backRoute}/`, {
           qrSvg: qrBlob,
           short: shortUrl,
           urlName: url
@@ -592,7 +592,7 @@ export default function App() {
       }
       
       else if (backRoute === "vcards") {
-        Axios.post(`http://localhost:3001/${backRoute}/`, {
+        Axios.post(`https://demo-project1-ms77.onrender.com/${backRoute}/`, {
           qrSvg: qrBlob,
           short: shortUrl,
           firstName: firstName,
@@ -633,7 +633,6 @@ export default function App() {
                   </select>
                   <button onClick={onDownloadClick}>Download</button>
                 </div>
-                <button><Link to='/users'>Log in as Admin</Link></button>
               </div>
               
               <div className="categories">
