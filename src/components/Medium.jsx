@@ -49,6 +49,7 @@ export default function Medium({ qrParam }) {
             .then(res => res.json())
             .then(async data => {
                 if (data.length) {
+                    console.log(data)
                     let obj = data.filter(site => site.short === qrParam)
                     let table = ""
                     if (obj.length) {
@@ -78,8 +79,9 @@ export default function Medium({ qrParam }) {
             .then(res => res.json())
             .then(data => {
                 if (data.length) {
+                    console.log(data)
                     let obj = data.filter(vcard => vcard.short === qrParam)
-                    let table = "vcards"
+                    let table = ""
                     if (obj.length) {
                         setObject(obj)
                         table = "vcards";
