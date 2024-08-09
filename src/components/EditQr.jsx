@@ -5,7 +5,8 @@ import './EditQr.css'
 
 const EditQr = ({ obj, curTable, edit, closeEdit, selectUrlForm, selectVCardForm, urlForm, vCardForm, url, onUrlChange, firstName, firstNameChange, lastName,
     lastNameChange, title, titleChange, email, emailChange, rawAddress, rawAddressChange,
-    contactUrl, contactUrlChange, tel, telChange, notes, notesChange, photo, selectImg, onUrlUpdate, onVCardUpdate, 
+    contactUrl, contactUrlChange, tel, telChange, notes, notesChange, photo, selectImg, onUrlUpdate, onVCardUpdate, waitingSite
+    , waitingVCard 
      }) => {
 
     if (waitingSite || waitingVCard) return <h1>Loading...</h1>
