@@ -68,6 +68,7 @@ export default function Medium({ qrParam }) {
                         });
                     }
                 } else {
+                    console.log("here")
                     setSitesLoading(false)
                 }
                 
