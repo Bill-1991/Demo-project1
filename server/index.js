@@ -136,6 +136,7 @@ app.post('/sitesupdate', async (req, res) => {
         .catch((err) => console.log(err));
     } else {
         await Url.findOneAndUpdate({ short: req.body.obj.short }, req.body.obj)
+        res.send()
     }
 })
 
@@ -150,6 +151,7 @@ app.post('/vcardsupdate', async (req, res) => {
         .catch((err) => console.log(err));
     } else {
         await VCard.findOneAndUpdate({ short: req.body.obj.short }, req.body.obj)
+        res.send()
     }
 })
 
