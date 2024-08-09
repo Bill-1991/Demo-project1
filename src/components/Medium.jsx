@@ -47,8 +47,7 @@ export default function Medium({ qrParam }) {
         useEffect(() => {
             fetch('https://demo-project1-ms77.onrender.com/fetchedsites')
             .then(res => res.json())
-            .then(data => {
-                console.log(data.length)
+            .then(async data => {
                 if (data.length) {
                     let obj = data.filter(site => site.short === qrParam)
                     let table = ""
@@ -56,7 +55,7 @@ export default function Medium({ qrParam }) {
                         setObject(obj)
                         table = "urls";
                         let redir = obj[0].urlName
-                        Axios.post('https://demo-project1-ms77.onrender.com/medium', {
+                        await Axios.post('https://demo-project1-ms77.onrender.com/medium', {
                             name: obj[0].short,
                             table: table
                         })
@@ -66,10 +65,10 @@ export default function Medium({ qrParam }) {
                         .finally(() => {
                             window.location.replace(`https://${redir}`)
                         });
+                    } else {
+                        setSitesLoading(false)
                     }
-                } else {
-                    setSitesLoading(false)
-                }
+                } 
                 
             })
           }, [qrParam])
