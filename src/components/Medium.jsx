@@ -47,16 +47,16 @@ export default function Medium({ qrParam }) {
         useEffect(() => {
             fetch('https://demo-project1-ms77.onrender.com/fetchedsites')
             .then(res => res.json())
-            .then(async data => {
+            .then(data => {
+                console.log(data.length)
                 if (data.length) {
-                    console.log(data)
                     let obj = data.filter(site => site.short === qrParam)
                     let table = ""
                     if (obj.length) {
                         setObject(obj)
                         table = "urls";
                         let redir = obj[0].urlName
-                        await Axios.post('https://demo-project1-ms77.onrender.com/medium', {
+                        Axios.post('https://demo-project1-ms77.onrender.com/medium', {
                             name: obj[0].short,
                             table: table
                         })
@@ -68,7 +68,6 @@ export default function Medium({ qrParam }) {
                         });
                     }
                 } else {
-                    console.log("here")
                     setSitesLoading(false)
                 }
                 
@@ -80,7 +79,6 @@ export default function Medium({ qrParam }) {
             .then(res => res.json())
             .then(data => {
                 if (data.length) {
-                    console.log(data)
                     let obj = data.filter(vcard => vcard.short === qrParam)
                     let table = ""
                     if (obj.length) {
