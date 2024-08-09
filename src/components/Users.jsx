@@ -26,6 +26,8 @@ const Users = () => {
     const [photo, setPhoto] = useState(null)
     const [tel, setTel] = useState("")
     const [rawAddress, setRawAddress] = useState("")
+    const [waitingSite, setWaitingSite] = useState(false)
+    const [waitingVCard, setWaitingVCard] = useState(false)
     
 
     useEffect(() => {
@@ -150,6 +152,7 @@ const Users = () => {
       };
 
     const onUrlUpdate = (curTable) => {
+      setWaitingSite(true)
       Axios.post(`https://demo-project1-ms77.onrender.com/sitesupdate/`, {
         obj: {
           qrSvg: obj.qrSvg,
@@ -162,6 +165,7 @@ const Users = () => {
         if (err) console.log(err);
       })
       .finally(() => {
+        setWaitingSite(false)
         window.location.reload()
       })
       
@@ -171,6 +175,7 @@ const Users = () => {
     const onVCardUpdate = async (curTable) => {
       let convertedPhoto;
       if (photo) {
+        setWaitingVCard(true)
         convertedPhoto = await convToBase64(photo)
         await Axios.post('https://demo-project1-ms77.onrender.com/vcardsupdate/', {
           obj: {
@@ -191,9 +196,11 @@ const Users = () => {
         .then((res, err) => {
           if (err) console.log(err);
         })
+        setWaitingVCard(false)
         window.location.reload()
       }
       else {
+        setWaitingVCard(true)
         convertedPhoto = obj.photo
         await Axios.post('https://demo-project1-ms77.onrender.com/vcardsupdate/', {
           obj: {
@@ -214,6 +221,7 @@ const Users = () => {
         .then((res, err) => {
           if (err) console.log(err);
         })
+        setWaitingVCard(false)
         window.location.reload()
       }
     }
@@ -226,7 +234,8 @@ const Users = () => {
             firstNameChange={firstNameChange} lastName={lastName} lastNameChange={lastNameChange} title={title} titleChange={titleChange} 
             email={email} emailChange={emailChange} contactUrl={contactUrl} contactUrlChange={contactUrlChange} rawAddress={rawAddress} 
             rawAddressChange={rawAddressChange}  tel={tel} telChange={telChange} notes={notes} notesChange={notesChange} photo={photo}
-            selectImg={selectImg} onUrlUpdate={onUrlUpdate} onVCardUpdate={onVCardUpdate}  /> : 
+            selectImg={selectImg} onUrlUpdate={onUrlUpdate} onVCardUpdate={onVCardUpdate} waitingSite={waitingSite}
+            waitingVCard={waitingVCard}  /> : 
             <>
             { !sitesArr.length && !vCardsArr.length ?
             <h1>You have 0 QrCodes, <Link to="/" reloadDocument>Go back</Link> and download some</h1> :

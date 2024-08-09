@@ -7,6 +7,8 @@ const EditQr = ({ obj, curTable, edit, closeEdit, selectUrlForm, selectVCardForm
     lastNameChange, title, titleChange, email, emailChange, rawAddress, rawAddressChange,
     contactUrl, contactUrlChange, tel, telChange, notes, notesChange, photo, selectImg, onUrlUpdate, onVCardUpdate, 
      }) => {
+
+    if (waitingSite || waitingVCard) return <h1>Loading...</h1>
     return (
         <div className='edit'>
             <button className='closeEdit' onClick={closeEdit}>X</button>
