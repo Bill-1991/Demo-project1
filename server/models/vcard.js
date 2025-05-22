@@ -20,7 +20,7 @@ const vCardSchema = new Schema({
     },
     title: {
         type: String,
-        required: true
+        required: false
     },
     email: {
         type: String,
@@ -40,11 +40,11 @@ const vCardSchema = new Schema({
     },
     notes: {
         type: String,
-        required: true
+        required: false
     },
     photo: {
         type: String,
-        required: true
+        required: false
     }
 
 }, { timestamps: true });
