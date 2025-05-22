@@ -610,7 +610,7 @@ export default function App() {
         qrCode.download({
           extension: fileExt
         });
-
+        console.log("ok")
         setShortUrl(produceShortUrl())
       } 
     }
