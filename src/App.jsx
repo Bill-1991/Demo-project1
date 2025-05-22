@@ -321,11 +321,12 @@ export default function App() {
   }
 
   const onVCardsChange = () => {
+    console.log(backRoute)
     if (vCards === false) {
       setUrls(false)
       setVCards(true)
       setBackRoute("vcards")
-      console.log(backRoute)
+      
     }
   }
   
@@ -574,7 +575,7 @@ export default function App() {
       let qrBlob = await qrText.then(value => value.text().then(value => value));
       console.log(backRoute, "good")
       if (backRoute === "sites") {
-        Axios.post(`https://localhost:3001/${backRoute}/`, {
+        Axios.post(`http://localhost:3001/${backRoute}/`, {
           qrSvg: qrBlob,
           short: shortUrl,
           urlName: url
@@ -591,7 +592,7 @@ export default function App() {
       }
       //demo-project1-ms77.onrender.com
       else if (backRoute === "vcards") {
-        Axios.post(`https://localhost:3001/${backRoute}/`, {
+        Axios.post(`http://localhost:3001/${backRoute}/`, {
           qrSvg: qrBlob,
           short: shortUrl,
           firstName: firstName,
