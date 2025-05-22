@@ -57,7 +57,6 @@ app.use(cors({
     origin: 'https://demo-project1-lhwe.onrender.com'
   }));
 
-
 app.post('/sites', (req, res) => {
     const url = new Url(
         req.body
@@ -80,6 +79,8 @@ app.post('/vcards', (req, res) => {
     vcard.save()
         .then((result) => res.send(result))
         .catch((err) => console.log(err));
+
+    console.log("ok")
     //res.json(req.body);
     //console.log(req.body);
     //const table = "vcards";

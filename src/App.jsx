@@ -574,7 +574,7 @@ export default function App() {
       let qrBlob = await qrText.then(value => value.text().then(value => value));
       console.log(backRoute, "good")
       if (backRoute === "sites") {
-        Axios.post(`https://demo-project1-ms77.onrender.com/${backRoute}/`, {
+        Axios.post(`https://localhost:3001/${backRoute}/`, {
           qrSvg: qrBlob,
           short: shortUrl,
           urlName: url
@@ -589,9 +589,9 @@ export default function App() {
 
         setShortUrl(produceShortUrl)
       }
-      
+      //demo-project1-ms77.onrender.com
       else if (backRoute === "vcards") {
-        Axios.post(`https://demo-project1-ms77.onrender.com/${backRoute}/`, {
+        Axios.post(`https://localhost:3001/${backRoute}/`, {
           qrSvg: qrBlob,
           short: shortUrl,
           firstName: firstName,
