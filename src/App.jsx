@@ -325,6 +325,7 @@ export default function App() {
       setUrls(false)
       setVCards(true)
       setBackRoute("vcards")
+      console.log(backRoute)
     }
   }
   
