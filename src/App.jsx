@@ -562,7 +562,7 @@ export default function App() {
         headers: {'Content-Type' : 'application/json'},
         body: {photo, qrText}
     })*/
-    
+    console.log(backRoute)
     let qrText = qrCode.getRawData('svg');
     let convertedPhoto;
     if (photo) {
@@ -610,7 +610,7 @@ export default function App() {
         qrCode.download({
           extension: fileExt
         });
-        console.log("ok")
+        
         setShortUrl(produceShortUrl())
       } 
     }
