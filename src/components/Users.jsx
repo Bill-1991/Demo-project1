@@ -31,7 +31,7 @@ const Users = () => {
     
 
     useEffect(() => {
-        fetch('https://localhost:3001/fetchedsites')
+        fetch('https://demo-project1-ms77.onrender.com/fetchedsites')
         .then(res => res.json())
         .then(data => {
           setSitesArr(data)
@@ -40,7 +40,7 @@ const Users = () => {
     }, [])
     
     useEffect(() => {
-        fetch('https://localhost:3001/fetchedvcards')
+        fetch('https://demo-project1-ms77.onrender.com/fetchedvcards')
         .then(res => res.json())
         .then(data => {
           setVCardsArr(data)
@@ -177,7 +177,7 @@ const Users = () => {
       if (photo) {
         setWaitingVCard(true)
         convertedPhoto = await convToBase64(photo)
-        await Axios.post('https://localhost:3001/vcardsupdate/', {
+        await Axios.post('https://demo-project1-ms77.onrender.com/vcardsupdate/', {
           obj: {
             qrSvg: obj.qrSvg,
             short: obj.short,
@@ -202,7 +202,7 @@ const Users = () => {
       else {
         setWaitingVCard(true)
         convertedPhoto = obj.photo
-        await Axios.post('https://localhost:3001/vcardsupdate/', {
+        await Axios.post('https://demo-project1-ms77.onrender.com/vcardsupdate/', {
           obj: {
             qrSvg: obj.qrSvg,
             short: obj.short,
