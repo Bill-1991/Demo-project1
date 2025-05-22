@@ -563,7 +563,7 @@ export default function App() {
         headers: {'Content-Type' : 'application/json'},
         body: {photo, qrText}
     })*/
-    console.log(backRoute)
+    
     let qrText = qrCode.getRawData('svg');
     let convertedPhoto;
     if (photo) {
@@ -572,7 +572,7 @@ export default function App() {
 
     async function waitData() {
       let qrBlob = await qrText.then(value => value.text().then(value => value));
-      
+      console.log(backRoute, "good")
       if (backRoute === "sites") {
         Axios.post(`https://demo-project1-ms77.onrender.com/${backRoute}/`, {
           qrSvg: qrBlob,
