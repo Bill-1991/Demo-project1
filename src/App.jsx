@@ -570,7 +570,11 @@ export default function App() {
       convertedPhoto = await convToBase64(photo)
     }
 
-    async function waitData() {
+    qrCode.download({
+          extension: fileExt
+    });
+
+    /*async function waitData() {
       let qrBlob = await qrText.then(value => value.text().then(value => value));
 
       if (backRoute === "sites") {
@@ -616,7 +620,7 @@ export default function App() {
       } 
     }
     
-    waitData()
+    waitData()*/
   }
 
   return (
