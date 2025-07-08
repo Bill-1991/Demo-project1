@@ -7,9 +7,11 @@ const VcardUi = ({ curVCard, addressChange, fileName, fileNameChange, downloadVc
  }) => {
     
     address = addressChange(address)
+    downloadVcard(curVCard)
 
     return (
-        <div id="vcards" className="vcardUi">
+        <></>
+        /*<div id="vcards" className="vcardUi">
             <div className="mainUi">
                 { photo && <img src={photo} /> }
                 <div className='name'>
@@ -39,7 +41,8 @@ const VcardUi = ({ curVCard, addressChange, fileName, fileNameChange, downloadVc
                 <input type="text" value={fileName} onChange={fileNameChange} placeholder='File name' />
                 <button onClick={() => downloadVcard(curVCard)}>Download</button>
             </div>
-        </div>
+        </div>*/
+        
     )
 }
 
