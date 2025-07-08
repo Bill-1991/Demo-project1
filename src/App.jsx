@@ -133,7 +133,7 @@ export default function App() {
   
   useEffect(() => {
       if (rawAddress) {
-        splitRawAddress = rawAddress.split(" ")
+        splitRawAddress = rawAddress.split(",")
       } else {
         splitRawAddress = ""
       }
