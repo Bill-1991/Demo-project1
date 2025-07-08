@@ -150,6 +150,19 @@ export default function App() {
 
   const rawVcard = `BEGIN:VCARD
 VERSION:4.0
+N:Doe;John;;;
+FN:John Doe
+TITLE:Engineer
+EMAIL:john@example.com
+TEL:+1234567890
+URL:https://example.com
+NOTE:Test note
+END:VCARD
+`
+//${rawAddress ? `ADR;TYPE=home:;;${splitRawAddress[0]};${splitRawAddress[1]};;${splitRawAddress[2]};${splitRawAddress[3]}` : ""}
+/*
+BEGIN:VCARD
+VERSION:4.0
 N:${lastName};${firstName};;;
 FN:${firstName} ${lastName}
 TITLE:${title}
@@ -158,8 +171,7 @@ TEL:${tel}
 URL:https://${contactUrl}
 NOTE:${notes}
 END:VCARD`;
-//${rawAddress ? `ADR;TYPE=home:;;${splitRawAddress[0]};${splitRawAddress[1]};;${splitRawAddress[2]};${splitRawAddress[3]}` : ""}
-
+*/ 
 
 
   function resizeImage(base64Str) {
