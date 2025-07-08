@@ -149,9 +149,11 @@ export default function App() {
   //console.log(firstName, lastName, title, email, contactUrl, notes, tel, rawAddress, splitRawAddress)
 
   const rawVcard = `BEGIN:VCARD
-VERSION:3.0
-N:VASILEIOS;ALTZERINIS
-END:VCARD`;
+VERSION:4.0
+N:Doe;John;;;
+FN:John Doe
+END:VCARD
+`;
 //${rawAddress ? `ADR;TYPE=home:;;${splitRawAddress[0]};${splitRawAddress[1]};;${splitRawAddress[2]};${splitRawAddress[3]}` : ""}
 /*
 BEGIN:VCARD
