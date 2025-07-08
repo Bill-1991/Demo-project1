@@ -135,8 +135,8 @@ const testlastName = "Doe";
 
 const rawVcard = `BEGIN:VCARD
 VERSION:4.0
-N:${testlastName};${testFirstName};;;
-FN:${testFirstName} ${testlastName}
+N:${lastName};${firstName};;;
+FN:${firstName} ${lastName}
 END:VCARD`;
 
 
@@ -298,11 +298,11 @@ END:VCARD
         errorCorrectionLevel: errorCorrectionLevel
       }
     });
-  }, [siteUrl, width, height, margin, image, dotsStyle, dotsColor, dotsGradient1, dotsGradient2, dotsColorType, dotsGradientType, dotsGradientRotation,
+  }, [url, width, height, margin, image, dotsStyle, dotsColor, dotsGradient1, dotsGradient2, dotsColorType, dotsGradientType, dotsGradientRotation,
   squaresColor, squaresStyle, squaresColorType, squaresGradientType, squaresGradient1, squaresGradient2, squaresGradientRotation,
   cornersDotsColor, cornersDotsStyle, cornersDotsColorType, cornersDotsGradientType, cornersDotsGradient1, cornersDotsGradient2, cornersDotsGradientRotation,
   backColor, backColorType, backGradientType, backGradient1, backGradient2, backGradientRotation,
-  backgroundDots, imgSize, imgMargin, typeNum, errorCorrectionLevel, vCardUrl, vCards]);
+  backgroundDots, imgSize, imgMargin, typeNum, errorCorrectionLevel, vCardUrl, vCards, firstName, lastName, title, email, contactUrl, notes, photo, rawAddress]);
 
   const selectImg = async (e) => {
     setPhoto(e.target.files[0])
