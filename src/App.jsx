@@ -144,7 +144,7 @@ VERSION:4.0
 ${firstName && lastName ? `N:${firstName};${lastName};;;` : ""}
 ${firstName && lastName ? `FN:${lastName} ${firstName}` : ""}
 ${title ? `TITLE:${title}` : ""}
-${rawAddress ? `ADR;TYPE=home:;;${splitRawAddress[0] ? splitRawAddress[0] : ""};${splitRawAddress[1] ? splitRawAddress[1] : ""};;${splitRawAddress[2] ? splitRawAddress[2] : ""};${splitRawAddress[3] ? splitRawAddress[3] : ""}` : ""}
+${rawAddress ? `ADR;TYPE=home:;;${splitRawAddress[0]};${splitRawAddress[1]};;${splitRawAddress[2]};${splitRawAddress[3]}` : ""}
 ${email ? `EMAIL:${email}` : ""}
 ${tel ? `TEL:${tel}` : ""}
 ${url ? `URL:https://${contactUrl}` : ""}
