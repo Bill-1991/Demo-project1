@@ -125,7 +125,7 @@ export default function App() {
   const [tel, setTel] = useState("")
   const [rawAddress, setRawAddress] = useState("")
   const [backRoute, setBackRoute] = useState("sites")
-  let splitRawAddress;
+  const [splitRawAddress, setSplitRawAddress] = useState([]);
   let siteUrl = `https://demo-project1-lhwe.onrender.com/${shortUrl}`
   let vCardUrl = `https://demo-project1-lhwe.onrender.com/${shortUrl}`
   let ref = useRef(null);
@@ -133,9 +133,10 @@ export default function App() {
   
   useEffect(() => {
       if (rawAddress) {
-        splitRawAddress = rawAddress.split(",")
+        let testSplitAddress = rawAddress.split(",")
+        setSplitRawAddress([...testSplitAddress])
       } else {
-        splitRawAddress = ""
+        setSplitRawAddress([])
       }
   }, [rawAddress])
 console.log(rawAddress, splitRawAddress)
