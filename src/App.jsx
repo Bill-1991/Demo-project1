@@ -153,7 +153,6 @@ VERSION:4.0
 N:${lastName};${firstName};;;
 FN:${firstName} ${lastName}
 TITLE:${title}
-${rawAddress ? `ADR;TYPE=home:;;${splitRawAddress[0]};${splitRawAddress[1]};;${splitRawAddress[2]};${splitRawAddress[3]}` : ""}
 EMAIL:${email}
 TEL:${tel}
 URL:https://${contactUrl}
