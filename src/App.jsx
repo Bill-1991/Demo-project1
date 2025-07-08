@@ -195,7 +195,7 @@ export default function App() {
 
   useEffect(() => {
     qrCode.update({
-      data: vCards === true ? `BEGIN:VCARD\nVERSION:4.0\nN:${firstName};${lastName};;\nFN:${lastName} ${firstName}\nTITLE:${title}\nADR;TYPE=home:;;${splitRawAddress[0]};${splitRawAddress[1]};;${splitRawAddress[2]};${splitRawAddress[3]}\nEMAIL:${email}\nTEL:${phone}\nURL:https://${website}\nNOTE:${notes}\nPHOTO;ENCODING=BASE64;TYPE=JPEG:${convertedPhoto}\nEND:VCARD`
+      data: vCards === true ? `BEGIN:VCARD\nVERSION:4.0\nN:${firstName};${lastName};;\nFN:${lastName} ${firstName}\nTITLE:${title}\nADR;TYPE=home:;;${splitRawAddress[0]};${splitRawAddress[1]};;${splitRawAddress[2]};${splitRawAddress[3]}\nEMAIL:${email}\nTEL:${tel}\nURL:https://${contactUrl}\nNOTE:${notes}\nEND:VCARD`
                : url,
       image: image,
       width: width,
