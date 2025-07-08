@@ -129,16 +129,21 @@ export default function App() {
   let siteUrl = `https://demo-project1-lhwe.onrender.com/${shortUrl}`
   let vCardUrl = `https://demo-project1-lhwe.onrender.com/${shortUrl}`
   let ref = useRef(null);
+
+  
   
   //vcards?id=${vCardId}&preview=${preview}
   //vcards?id=${previewId}&preview=${preview}
   //medium?next=${url}
   //console.log(siteUrl)
-  if (rawAddress) {
-    splitRawAddress = rawAddress.split(" ")
-  } else {
-    splitRawAddress = ""
-  }
+  useEffect(() => {
+      if (rawAddress) {
+        splitRawAddress = rawAddress.split(" ")
+      } else {
+        splitRawAddress = ""
+      }
+  }, [rawAddress])
+  console.log(firstName, lastName, title, email, contactUrl, notes, tel, rawAddress, splitRawAddress)
 
   function resizeImage(base64Str) {
     return new Promise(resolve => {
@@ -571,11 +576,11 @@ export default function App() {
         body: {photo, qrText}
     })*/
     
-    let qrText = qrCode.getRawData('svg');
+    /*let qrText = qrCode.getRawData('svg');
     let convertedPhoto;
     if (photo) {
       convertedPhoto = await convToBase64(photo)
-    }
+    }*/
 
     qrCode.download({
           extension: fileExt
