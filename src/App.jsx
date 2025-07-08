@@ -150,7 +150,7 @@ export default function App() {
 
   const rawVcard = `BEGIN:VCARD
 VERSION:3.0
-N:${firstName};${lastName}
+N:VASILEIOS;ALTZERINIS
 END:VCARD`;
 //${rawAddress ? `ADR;TYPE=home:;;${splitRawAddress[0]};${splitRawAddress[1]};;${splitRawAddress[2]};${splitRawAddress[3]}` : ""}
 /*
