@@ -138,7 +138,7 @@ export default function App() {
         splitRawAddress = ""
       }
   }, [rawAddress])
-
+console.log(splitRawAddress)
 const rawVcard = `BEGIN:VCARD
 VERSION:4.0
 ${firstName && lastName ? `N:${firstName};${lastName};;;` : ""}
