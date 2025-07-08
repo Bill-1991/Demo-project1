@@ -6,13 +6,15 @@ import './Vcard.css';
 const Vcard = ({ vCardUrl, firstName, firstNameChange, lastName, lastNameChange, title, titleChange, email, emailChange, rawAddress, rawAddressChange,
   contactUrl, contactUrlChange, tel, telChange, notes, notesChange, selectImg, edit, obj, curTable, onVCardUpdate 
 }) => {
-
-    return (
-      <div className='vcard'>
-        { !edit && <div className='vcardUrl'>
+    /*
+    { !edit && <div className='vcardUrl'>
             <p>Data</p>
             <input value={`${vCardUrl}`} readOnly />
           </div> }
+    */
+    return (
+      <div className='vcard'>
+        
         <Form>
           <Form.Group className='firstname'>
             <p>First name: </p>
@@ -51,9 +53,9 @@ const Vcard = ({ vCardUrl, firstName, firstNameChange, lastName, lastNameChange,
             <Form.Control type="file" onChange={selectImg} placeholder='Photo' />
           </Form.Group>
         </Form>
-        { edit && <button className='save' onClick={() => onVCardUpdate(curTable)} >Save</button> }
+        
       </div>
     )
 }
-
+//{ edit && <button className='save' onClick={() => onVCardUpdate(curTable)} >Save</button> }
 export default Vcard;
