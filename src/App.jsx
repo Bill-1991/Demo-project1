@@ -134,6 +134,7 @@ export default function App() {
   useEffect(() => {
       if (rawAddress) {
         let testSplitAddress = rawAddress.split(",")
+        console.log(testSplitAddress)
         setSplitRawAddress([...testSplitAddress])
       } else {
         setSplitRawAddress([])
