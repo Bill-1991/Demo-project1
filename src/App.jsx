@@ -146,11 +146,11 @@ export default function App() {
         splitRawAddress = ""
       }
   }, [rawAddress])
-  console.log(firstName, lastName, title, email, contactUrl, notes, tel, rawAddress, splitRawAddress)
+  //console.log(firstName, lastName, title, email, contactUrl, notes, tel, rawAddress, splitRawAddress)
 
   const rawVcard = `BEGIN:VCARD
 VERSION:4.0
-N:${firstName};${lastName};;;
+N:${lastName};${firstName};;;
 FN:${firstName} ${lastName}
 TITLE:${title}
 EMAIL:${email}
@@ -609,6 +609,8 @@ END:VCARD`;
     if (photo) {
       convertedPhoto = await convToBase64(photo)
     }*/
+
+    console.log(rawVcard)
 
     qrCode.download({
           extension: fileExt
