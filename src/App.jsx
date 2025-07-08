@@ -615,7 +615,7 @@ END:VCARD`;
       convertedPhoto = await convToBase64(photo)
     }*/
 
-    console.log(rawVcard, rawAddress, splitRawAddress)
+    console.log(rawVcard, rawAddress)
 
     qrCode.download({
           extension: fileExt
