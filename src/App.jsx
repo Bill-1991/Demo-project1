@@ -129,6 +129,19 @@ export default function App() {
   let siteUrl = `https://demo-project1-lhwe.onrender.com/${shortUrl}`
   let vCardUrl = `https://demo-project1-lhwe.onrender.com/${shortUrl}`
   let ref = useRef(null);
+  const rawVcard = `BEGIN:VCARD
+VERSION:4.0
+N:${lastName};${firstName};;;
+FN:${firstName} ${lastName}
+TITLE:${title}
+${rawAddress ? `ADR;TYPE=home:;;${splitRawAddress[0]};${splitRawAddress[1]};;${splitRawAddress[2]};${splitRawAddress[3]}` : ""}
+EMAIL:${email}
+TEL:${tel}
+URL:https://${contactUrl}
+NOTE:${notes}
+END:VCARD`;
+
+const vcardForQR = rawVcard.replaceAll('\n', '\\n');
 
   
   
@@ -199,7 +212,7 @@ export default function App() {
 
   useEffect(() => {
     qrCode.update({
-      data: vCards === true ? `BEGIN:VCARD\nVERSION:4.0\nN:${firstName};${lastName};;\nFN:${lastName} ${firstName}\nTITLE:${title}${ rawAddress ? `\nADR;TYPE=home:;;${splitRawAddress[0]};${splitRawAddress[1]};;${splitRawAddress[2]};${splitRawAddress[3]}`: ""}\nEMAIL:${email}\nTEL:${tel}\nURL:https://${contactUrl}\nNOTE:${notes}\nEND:VCARD`
+      data: vCards === true ? rawVcard
                : url,
       image: image,
       width: width,
