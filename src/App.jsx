@@ -150,7 +150,7 @@ export default function App() {
 
   const rawVcard = `BEGIN:VCARD
 VERSION:4.0
-N:Doe;John;;;
+N:${firstName};${lastName};;;
 FN:John Doe
 END:VCARD
 `;
