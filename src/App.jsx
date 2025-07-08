@@ -193,14 +193,14 @@ export default function App() {
       setPreviewId(changeId)
     })
   }, [])*/
-
+  //BEGIN:VCARD    END:VCARD
   useEffect(() => {
     qrCode.append(ref.current);  
   }, []);
 
   useEffect(() => {
     qrCode.update({
-      data: vCards === true ? `BEGIN:VCARD\nVERSION:4.0\nN:${firstName};${lastName};;\nFN:${lastName} ${firstName}\nTITLE:${title}${ rawAddress ? `\nADR;TYPE=home:;;${splitRawAddress[0]};${splitRawAddress[1]};;${splitRawAddress[2]};${splitRawAddress[3]}`: ""}\nEMAIL:${email}\nTEL:${tel}\nURL:https://${contactUrl}\nNOTE:${notes}\nEND:VCARD`
+      data: vCards === true ? `\nVERSION:4.0\nN:${firstName};${lastName};;\nFN:${lastName} ${firstName}\nTITLE:${title}${ rawAddress ? `\nADR;TYPE=home:;;${splitRawAddress[0]};${splitRawAddress[1]};;${splitRawAddress[2]};${splitRawAddress[3]}`: ""}\nEMAIL:${email}\nTEL:${tel}\nURL:https://${contactUrl}\nNOTE:${notes}\n`
                : url,
       image: image,
       width: width,
