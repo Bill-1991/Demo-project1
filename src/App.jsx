@@ -135,7 +135,7 @@ export default function App() {
       if (rawAddress) {
         let testSplitAddress = rawAddress.split(",")
         console.log(testSplitAddress)
-        setSplitRawAddress([...testSplitAddress])
+        setSplitRawAddress(testSplitAddress)
       } else {
         setSplitRawAddress([])
       }
