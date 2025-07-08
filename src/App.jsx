@@ -134,13 +134,12 @@ export default function App() {
   useEffect(() => {
       if (rawAddress) {
         let testSplitAddress = rawAddress.split(",")
-        console.log(testSplitAddress)
         setSplitRawAddress(testSplitAddress)
       } else {
         setSplitRawAddress([])
       }
   }, [rawAddress])
-console.log(rawAddress, splitRawAddress)
+
 const rawVcard = `BEGIN:VCARD
 VERSION:4.0
 ${firstName && lastName ? `N:${firstName};${lastName};;;` : ""}
@@ -154,31 +153,12 @@ ${notes ? `NOTE:${notes}` : ""}
 END:VCARD`;
 
 
-//const rawVcard = vcardString.replace(/\r\n/g, '\n').trim();
-
-  
   
   //vcards?id=${vCardId}&preview=${preview}
   //vcards?id=${previewId}&preview=${preview}
   //medium?next=${url}
   //console.log(siteUrl)
   
-  //console.log(firstName, lastName, title, email, contactUrl, notes, tel, rawAddress, splitRawAddress)
-
-//${rawAddress ? `ADR;TYPE=home:;;${splitRawAddress[0]};${splitRawAddress[1]};;${splitRawAddress[2]};${splitRawAddress[3]}` : ""}
-/*
-BEGIN:VCARD
-VERSION:4.0
-N:${lastName};${firstName};;;
-FN:${firstName} ${lastName}
-TITLE:${title}
-EMAIL:${email}
-TEL:${tel}
-URL:https://${contactUrl}
-NOTE:${notes}
-END:VCARD`;
-
-*/ 
 
 
   function resizeImage(base64Str) {
@@ -616,8 +596,6 @@ END:VCARD`;
     if (photo) {
       convertedPhoto = await convToBase64(photo)
     }*/
-
-    console.log(rawVcard, rawAddress)
 
     qrCode.download({
           extension: fileExt
