@@ -125,6 +125,7 @@ export default function App() {
   const [tel, setTel] = useState("")
   const [rawAddress, setRawAddress] = useState("")
   const [backRoute, setBackRoute] = useState("sites")
+  let splitRawAddress;
   let siteUrl = `https://demo-project1-lhwe.onrender.com/${shortUrl}`
   let vCardUrl = `https://demo-project1-lhwe.onrender.com/${shortUrl}`
   let ref = useRef(null);
@@ -133,6 +134,11 @@ export default function App() {
   //vcards?id=${previewId}&preview=${preview}
   //medium?next=${url}
   //console.log(siteUrl)
+  if (rawAddress) {
+    splitRawAddress = rawAddress.split(" ")
+  } else {
+    splitRawAddress = ""
+  }
 
   function resizeImage(base64Str) {
     return new Promise(resolve => {
@@ -189,7 +195,8 @@ export default function App() {
 
   useEffect(() => {
     qrCode.update({
-      data: vCards === true ? vCardUrl : siteUrl,
+      data: vCards === true ? `BEGIN:VCARD\nVERSION:4.0\nN:${firstName};${lastName};;\nFN:${lastName} ${firstName}\nTITLE:${title}\nADR;TYPE=home:;;${splitRawAddress[0]};${splitRawAddress[1]};;${splitRawAddress[2]};${splitRawAddress[3]}\nEMAIL:${email}\nTEL:${phone}\nURL:https://${website}\nNOTE:${notes}\nPHOTO;ENCODING=BASE64;TYPE=JPEG:${convertedPhoto}\nEND:VCARD`
+               : url,
       image: image,
       width: width,
       height: height,
