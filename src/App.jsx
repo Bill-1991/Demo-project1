@@ -133,8 +133,13 @@ export default function App() {
 
 const rawVcard = `BEGIN:VCARD
 VERSION:4.0
-N:${lastName};${firstName};;;
-FN:${firstName} ${lastName}
+N:${firstName};${lastName};;;
+FN:${lastName} ${firstName}
+TITLE:${title}
+EMAIL:${email}
+TEL:${tel}
+URL:https://${contactUrl}
+NOTE:${notes}
 END:VCARD`;
 
 
@@ -168,17 +173,6 @@ URL:https://${contactUrl}
 NOTE:${notes}
 END:VCARD`;
 
-
-BEGIN:VCARD
-VERSION:4.0
-N:${firstName};${lastName};;;
-FN:${lastName} ${firstName}
-TITLE:${title}
-EMAIL:${email}
-TEL:${tel}
-URL:https://${contactUrl}
-NOTE:${notes}
-END:VCARD
 */ 
 
 
@@ -300,7 +294,7 @@ END:VCARD
   squaresColor, squaresStyle, squaresColorType, squaresGradientType, squaresGradient1, squaresGradient2, squaresGradientRotation,
   cornersDotsColor, cornersDotsStyle, cornersDotsColorType, cornersDotsGradientType, cornersDotsGradient1, cornersDotsGradient2, cornersDotsGradientRotation,
   backColor, backColorType, backGradientType, backGradient1, backGradient2, backGradientRotation,
-  backgroundDots, imgSize, imgMargin, typeNum, errorCorrectionLevel, vCardUrl, vCards, firstName, lastName, title, email, contactUrl, notes, photo, rawAddress]);
+  backgroundDots, imgSize, imgMargin, typeNum, errorCorrectionLevel, vCardUrl, vCards, firstName, lastName, title, email, tel, contactUrl, notes, photo, rawAddress]);
 
   const selectImg = async (e) => {
     setPhoto(e.target.files[0])
