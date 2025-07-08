@@ -129,19 +129,9 @@ export default function App() {
   let siteUrl = `https://demo-project1-lhwe.onrender.com/${shortUrl}`
   let vCardUrl = `https://demo-project1-lhwe.onrender.com/${shortUrl}`
   let ref = useRef(null);
-  const rawVcard = `BEGIN:VCARD
-VERSION:4.0
-N:${lastName};${firstName};;;
-FN:${firstName} ${lastName}
-TITLE:${title}
-${rawAddress ? `ADR;TYPE=home:;;${splitRawAddress[0]};${splitRawAddress[1]};;${splitRawAddress[2]};${splitRawAddress[3]}` : ""}
-EMAIL:${email}
-TEL:${tel}
-URL:https://${contactUrl}
-NOTE:${notes}
-END:VCARD`;
+  
 
-const vcardForQR = rawVcard.replaceAll('\n', '\\n');
+
 
   
   
@@ -157,6 +147,21 @@ const vcardForQR = rawVcard.replaceAll('\n', '\\n');
       }
   }, [rawAddress])
   console.log(firstName, lastName, title, email, contactUrl, notes, tel, rawAddress, splitRawAddress)
+
+  const rawVcard = `BEGIN:VCARD
+VERSION:4.0
+N:${lastName};${firstName};;;
+FN:${firstName} ${lastName}
+TITLE:${title}
+${rawAddress ? `ADR;TYPE=home:;;${splitRawAddress[0]};${splitRawAddress[1]};;${splitRawAddress[2]};${splitRawAddress[3]}` : ""}
+EMAIL:${email}
+TEL:${tel}
+URL:https://${contactUrl}
+NOTE:${notes}
+END:VCARD`;
+
+const vcardForQR = rawVcard.replaceAll('\n', '\\n');
+
 
   function resizeImage(base64Str) {
     return new Promise(resolve => {
