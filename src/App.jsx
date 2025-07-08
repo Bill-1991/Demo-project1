@@ -130,8 +130,6 @@ export default function App() {
   let vCardUrl = `https://demo-project1-lhwe.onrender.com/${shortUrl}`
   let ref = useRef(null);
   
-const testFirstName = "John";
-const testlastName = "Doe";
 
 const rawVcard = `BEGIN:VCARD
 VERSION:4.0
