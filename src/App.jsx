@@ -159,7 +159,7 @@ URL:https://${contactUrl}
 NOTE:${notes}
 END:VCARD`;
 //${rawAddress ? `ADR;TYPE=home:;;${splitRawAddress[0]};${splitRawAddress[1]};;${splitRawAddress[2]};${splitRawAddress[3]}` : ""}
-const vcardForQR = rawVcard.replaceAll('\n', '\\n');
+
 
 
   function resizeImage(base64Str) {
@@ -216,7 +216,7 @@ const vcardForQR = rawVcard.replaceAll('\n', '\\n');
 
   useEffect(() => {
     qrCode.update({
-      data: vCards === true ? vcardForQR
+      data: vCards === true ? rawVcard
                : url,
       image: image,
       width: width,
