@@ -151,7 +151,7 @@ export default function App() {
   const rawVcard = `BEGIN:VCARD
 VERSION:4.0
 N:${firstName};${lastName};;;
-FN:John Doe
+FN:${firstName} ${lastName}
 END:VCARD
 `;
 //${rawAddress ? `ADR;TYPE=home:;;${splitRawAddress[0]};${splitRawAddress[1]};;${splitRawAddress[2]};${splitRawAddress[3]}` : ""}
