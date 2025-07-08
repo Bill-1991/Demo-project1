@@ -130,8 +130,17 @@ export default function App() {
   let vCardUrl = `https://demo-project1-lhwe.onrender.com/${shortUrl}`
   let ref = useRef(null);
   
+const testFirstName = "John";
+const testlastName = "Doe";
+
+const rawVcard = `BEGIN:VCARD
+VERSION:4.0
+N:${testlastName};${testFirstName};;;
+FN:${testFirstName} ${testlastName}
+END:VCARD`;
 
 
+//const rawVcard = vcardString.replace(/\r\n/g, '\n').trim();
 
   
   
@@ -148,12 +157,6 @@ export default function App() {
   }, [rawAddress])
   //console.log(firstName, lastName, title, email, contactUrl, notes, tel, rawAddress, splitRawAddress)
 
-  const rawVcard = `BEGIN:VCARD
-VERSION:4.0
-N:${firstName};${lastName};;;
-FN:${firstName} ${lastName}
-END:VCARD
-`;
 //${rawAddress ? `ADR;TYPE=home:;;${splitRawAddress[0]};${splitRawAddress[1]};;${splitRawAddress[2]};${splitRawAddress[3]}` : ""}
 /*
 BEGIN:VCARD
