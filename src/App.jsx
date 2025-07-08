@@ -149,7 +149,7 @@ export default function App() {
   //console.log(firstName, lastName, title, email, contactUrl, notes, tel, rawAddress, splitRawAddress)
 
   const rawVcard = `BEGIN:VCARD
-VERSION:4.0
+VERSION:3.0
 N:${lastName};${firstName};;;
 FN:${firstName} ${lastName}
 TITLE:${title}
