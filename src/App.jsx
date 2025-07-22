@@ -153,7 +153,7 @@ ${notes ? `NOTE:${notes}` : ""}
 END:VCARD`;*/
 
 const rawVcard = `BEGIN:VCARD
-VERSION:4.0
+VERSION:3.0
 ${firstName && lastName ? `N:${lastName};${firstName};;;` : ""}
 ${firstName && lastName ? `FN:${firstName} ${lastName}` : ""}
 ${title ? `TITLE:${title}` : ""}
