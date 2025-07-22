@@ -140,8 +140,8 @@ export default function App() {
       }
   }, [rawAddress])
 
-const rawVcard = `BEGIN:VCARD
-VERSION:4.0
+/*const rawVcard = `BEGIN:VCARD
+VERSION:2.1
 ${firstName && lastName ? `N:${firstName};${lastName};;;` : ""}
 ${firstName && lastName ? `FN:${lastName} ${firstName}` : ""}
 ${title ? `TITLE:${title}` : ""}
@@ -150,7 +150,29 @@ ${email ? `EMAIL:${email}` : ""}
 ${tel ? `TEL:${tel}` : ""}
 ${contactUrl ? `URL:https://${contactUrl}` : ""}
 ${notes ? `NOTE:${notes}` : ""}
+END:VCARD`;*/
+
+const rawVcard = `BEGIN:VCARD
+VERSION:4.0
+${firstName && lastName ? `N:${lastName};${firstName};;;` : ""}
+${firstName && lastName ? `FN:${firstName} ${lastName}` : ""}
+${title ? `TITLE:${title}` : ""}
+${splitRawAddress?.length > 0 ? `ADR;TYPE=home:;;${splitRawAddress[0] || ""};${splitRawAddress[1] || ""};;${splitRawAddress[2] || ""};${splitRawAddress[3] || ""}` : ""}
+${email ? `EMAIL:${email}` : ""}
+${tel ? `TEL;TYPE=cell:${tel}` : ""}
+${contactUrl ? `URL:https://${contactUrl}` : ""}
+${notes ? `NOTE:${notes}` : ""}
 END:VCARD`;
+
+const formattedVcard = rawVcard.replace(/\n/g, "\r\n");
+
+const encoder = new TextEncoder();
+const utf8Bytes = encoder.encode(formattedVcard);
+
+// Convert bytes back to string (sometimes needed for QR libraries)
+const utf8String = Array.from(utf8Bytes)
+  .map(b => String.fromCharCode(b))
+  .join("");
 
 
   
@@ -215,7 +237,7 @@ END:VCARD`;
 
   useEffect(() => {
     qrCode.update({
-      data: vCards === true ? rawVcard
+      data: vCards === true ? utf8String
                : url,
       image: image,
       width: width,
@@ -272,6 +294,7 @@ END:VCARD`;
       },
       qrOptions: {
         typeNumber: typeNum,
+        mode: 'Byte',
         errorCorrectionLevel: errorCorrectionLevel
       }
     });
