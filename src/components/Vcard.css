@@ -13,6 +13,8 @@
 .vcardUrl,
 .email,
 .address,
+.workTel,
+.org,
 .vCardPrev {
   display: grid;
   grid-template-columns: 30% 70%;
@@ -30,6 +32,8 @@
 .vcardUrl input,
 .email input,
 .address input,
+.workTel input,
+.org input,
 .vCardPrev input{
   border-radius: 2%;
   border-color: black;
@@ -73,6 +77,8 @@
 .vcardUrl p,
 .email p,
 .address p,
+.workTel p,
+.org p,
 .vCardPrev p{
   font-size: 16px;
   font-weight: 700;
@@ -106,7 +112,9 @@
   .tel,
   .vcardUrl,
   .email,
-  .address {
+  .address,
+  .workTel,
+  .org {
     display: block;
   }
 
@@ -120,7 +128,9 @@
   .tel input,
   .vcardUrl input,
   .email input,
-  .address input {
+  .address input,
+  .workTel input,
+  .org input {
     height: 30px
   }
 }

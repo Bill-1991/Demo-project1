@@ -4,7 +4,7 @@ import './Vcard.css';
 
 
 const Vcard = ({ vCardUrl, firstName, firstNameChange, lastName, lastNameChange, title, titleChange, email, emailChange, rawAddress, rawAddressChange,
-  contactUrl, contactUrlChange, tel, telChange, notes, notesChange, selectImg, edit, obj, curTable, onVCardUpdate 
+  contactUrl, contactUrlChange, org, orgChange, secondTel, secondTelChange, tel, telChange, notes, notesChange, selectImg, edit, obj, curTable, onVCardUpdate 
 }) => {
     /*
     { !edit && <div className='vcardUrl'>
@@ -23,6 +23,10 @@ const Vcard = ({ vCardUrl, firstName, firstNameChange, lastName, lastNameChange,
           <Form.Group className='lastname'>
             <p>Last name: </p>
             <Form.Control type="text" onChange={lastNameChange} value={lastName} placeholder={edit && curTable === 'vcards' ? obj.lastName : "Last name"} />
+          </Form.Group>
+          <Form.Group className='org'>
+            <p>Organizattion: </p>
+            <Form.Control type="text" onChange={orgChange} value={org} placeholder={edit && curTable === 'vcards' ? obj.title : "Organization"} />
           </Form.Group>
           <Form.Group className='title'>
             <p>Title: </p>
@@ -43,6 +47,10 @@ const Vcard = ({ vCardUrl, firstName, firstNameChange, lastName, lastNameChange,
           <Form.Group className='tel'>
             <p>Phone number: </p>
             <Form.Control type="number" onChange={telChange} value={tel} placeholder={ edit && curTable === 'vcards' ? obj.phone : "Only numbers format: 6900000000" } />
+          </Form.Group>
+          <Form.Group className='workTel'>
+            <p>Work Phone number: </p>
+            <Form.Control type="number" onChange={secondTelChange} value={secondTel} placeholder={ edit && curTable === 'vcards' ? obj.phone : "Only numbers format: 6900000000 / 2100000000" } />
           </Form.Group>
           <Form.Group className='notes'>
             <p>Notes: </p>

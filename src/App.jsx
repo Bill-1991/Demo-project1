@@ -123,6 +123,8 @@ export default function App() {
   const [notes, setNotes] = useState("")
   const [photo, setPhoto] = useState(null)
   const [tel, setTel] = useState("")
+  const [org, setOrg] = useState("")
+  const [secondTel, setSecondTel] = useState("")
   const [rawAddress, setRawAddress] = useState("")
   const [backRoute, setBackRoute] = useState("sites")
   const [splitRawAddress, setSplitRawAddress] = useState([]);
@@ -154,12 +156,14 @@ END:VCARD`;*/
 
 const rawVcard = `BEGIN:VCARD
 VERSION:3.0
-${firstName && lastName ? `N:${lastName};${firstName};;;` : ""}
+N:${lastName ? `${lastName}` : ""};${firstName ? `${firstName}` : ""};;;
 ${firstName && lastName ? `FN:${firstName} ${lastName}` : ""}
+${org ? `ORG:${org}` : ""}
 ${title ? `TITLE:${title}` : ""}
-${splitRawAddress?.length > 0 ? `ADR;TYPE=home:;;${splitRawAddress[0] || ""};${splitRawAddress[1] || ""};;${splitRawAddress[2] || ""};${splitRawAddress[3] || ""}` : ""}
+${splitRawAddress?.length > 0 ? `ADR;TYPE=WORK:;;${splitRawAddress[0] || ""};${splitRawAddress[1] || ""};;${splitRawAddress[2] || ""};${splitRawAddress[3] || ""}` : ""}
 ${email ? `EMAIL:${email}` : ""}
-${tel ? `TEL;TYPE=cell:${tel}` : ""}
+${tel ? `TEL;TYPE=CELL:${tel}` : ""}
+${secondTel ? `TEL;TYPE=WORK:${secondTel}` : ""}
 ${contactUrl ? `URL:https://${contactUrl}` : ""}
 ${notes ? `NOTE:${notes}` : ""}
 END:VCARD`;
@@ -168,8 +172,6 @@ const formattedVcard = rawVcard.replace(/\n/g, "\r\n");
 
 const encoder = new TextEncoder();
 const utf8Bytes = encoder.encode(formattedVcard);
-
-// Convert bytes back to string (sometimes needed for QR libraries)
 const utf8String = Array.from(utf8Bytes)
   .map(b => String.fromCharCode(b))
   .join("");
@@ -302,7 +304,7 @@ const utf8String = Array.from(utf8Bytes)
   squaresColor, squaresStyle, squaresColorType, squaresGradientType, squaresGradient1, squaresGradient2, squaresGradientRotation,
   cornersDotsColor, cornersDotsStyle, cornersDotsColorType, cornersDotsGradientType, cornersDotsGradient1, cornersDotsGradient2, cornersDotsGradientRotation,
   backColor, backColorType, backGradientType, backGradient1, backGradient2, backGradientRotation,
-  backgroundDots, imgSize, imgMargin, typeNum, errorCorrectionLevel, vCardUrl, vCards, firstName, lastName, title, email, tel, contactUrl, notes, photo, splitRawAddress]);
+  backgroundDots, imgSize, imgMargin, typeNum, errorCorrectionLevel, vCardUrl, vCards, firstName, lastName, title, email, tel, contactUrl, notes, photo, org, secondTel, splitRawAddress]);
 
   const selectImg = async (e) => {
     setPhoto(e.target.files[0])
@@ -326,6 +328,14 @@ const utf8String = Array.from(utf8Bytes)
 
   const telChange = (e) => {
     setTel(e.target.value)
+  }
+
+  const secondTelChange = (e) => {
+    setSecondTel(e.target.value)
+  }
+
+  const orgChange = (e) => {
+    setOrg(e.target.value)
   }
 
   const contactUrlChange = (e) => {
@@ -698,7 +708,7 @@ const utf8String = Array.from(utf8Bytes)
                   { urls === true ? <Url url={url} siteUrl={siteUrl} onUrlChange={onUrlChange} /> : 
                   <Vcard vCardUrl={vCardUrl} firstName={firstName} firstNameChange={firstNameChange} 
                   lastName={lastName} lastNameChange={lastNameChange} title={title} titleChange={titleChange} email={email} emailChange={emailChange} 
-                  contactUrl={contactUrl} contactUrlChange={contactUrlChange} tel={tel} telChange={telChange} rawAddress={rawAddress}
+                  contactUrl={contactUrl} contactUrlChange={contactUrlChange} tel={tel} secondTel={secondTel} org={org} telChange={telChange} secondTelChange={secondTelChange} orgChange={orgChange} rawAddress={rawAddress}
                   rawAddressChange={rawAddressChange} notes={notes} notesChange={notesChange} selectImg={selectImg} 
                   /> }
                 </div>
