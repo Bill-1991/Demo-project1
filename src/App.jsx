@@ -306,6 +306,13 @@ const utf8String = Array.from(utf8Bytes)
   backColor, backColorType, backGradientType, backGradient1, backGradient2, backGradientRotation,
   backgroundDots, imgSize, imgMargin, typeNum, errorCorrectionLevel, vCardUrl, vCards, firstName, lastName, title, email, tel, contactUrl, notes, photo, org, secondTel, splitRawAddress]);
 
+
+  const changeFileExt = (e) => {
+    setFileExt(e.target.value)
+  }
+
+
+
   const selectImg = async (e) => {
     setPhoto(e.target.files[0])
   }
@@ -693,6 +700,7 @@ const utf8String = Array.from(utf8Bytes)
                 <div className="download">
                   <select onChange={onExtensionChange} value={fileExt}>
                     <option value="svg">SVG</option>
+                    <option value="png">PNG</option>
                   </select>
                   <button onClick={onDownloadClick}>Download</button>
                 </div>
