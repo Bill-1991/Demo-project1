@@ -242,6 +242,7 @@ const utf8String = Array.from(utf8Bytes)
       data: vCards === true ? utf8String
                : url,
       image: image,
+      tyoe: fileExt,
       width: width,
       height: height,
       margin: margin,
@@ -304,12 +305,7 @@ const utf8String = Array.from(utf8Bytes)
   squaresColor, squaresStyle, squaresColorType, squaresGradientType, squaresGradient1, squaresGradient2, squaresGradientRotation,
   cornersDotsColor, cornersDotsStyle, cornersDotsColorType, cornersDotsGradientType, cornersDotsGradient1, cornersDotsGradient2, cornersDotsGradientRotation,
   backColor, backColorType, backGradientType, backGradient1, backGradient2, backGradientRotation,
-  backgroundDots, imgSize, imgMargin, typeNum, errorCorrectionLevel, vCardUrl, vCards, firstName, lastName, title, email, tel, contactUrl, notes, photo, org, secondTel, splitRawAddress]);
-
-
-  const changeFileExt = (e) => {
-    setFileExt(e.target.value)
-  }
+  backgroundDots, imgSize, imgMargin, typeNum, errorCorrectionLevel, vCardUrl, vCards, firstName, lastName, title, email, tel, contactUrl, notes, photo, org, secondTel, splitRawAddress, fileExt]);
 
 
 
