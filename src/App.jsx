@@ -242,7 +242,7 @@ const utf8String = Array.from(utf8Bytes)
       data: vCards === true ? utf8String
                : url,
       image: image,
-      tyoe: fileExt,
+      type: fileExt,
       width: width,
       height: height,
       margin: margin,
@@ -369,7 +369,6 @@ const utf8String = Array.from(utf8Bytes)
     });
   };
 
-  
 
   const onCustomizeChange = () => {
     customize === false ? setCustomize(true) : setCustomize(false)
