@@ -617,7 +617,7 @@ const utf8String = Array.from(utf8Bytes)
 
 
 
-  const onDownloadClick = () => {
+  //const onDownloadClick  = async () => {
     //const headers = { 'Content-Type': 'application/json' };
       /*Axios({
         method: 'post',
@@ -632,9 +632,10 @@ const utf8String = Array.from(utf8Bytes)
       convertedPhoto = await convToBase64(photo)
     }*/
 
-    qrCode.download({
+
+    /*qrCode.download({
           extension: fileExt
-    });
+    });*/
 
     /*async function waitData() {
       let qrBlob = await qrText.then(value => value.text().then(value => value));
@@ -683,7 +684,90 @@ const utf8String = Array.from(utf8Bytes)
     }
     
     waitData()*/
+  //}
+
+  const downloadBlob = (blob, filename) => {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+};
+
+const svgBlobToPngOrJpeg = (svgText, w, h, type = "png", jpegQuality = 0.92) => {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = "anonymous"; // requires that any embedded image has CORS headers
+    img.onload = () => {
+      try {
+        const canvas = document.createElement("canvas");
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext("2d");
+
+        // For JPG fill background (JPEG doesn't support transparency)
+        if (type === "jpeg" || type === "jpg") {
+          ctx.fillStyle = backColor || "#ffffff";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        canvas.toBlob(
+          (blob) => {
+            if (blob) resolve(blob);
+            else reject(new Error("canvas.toBlob returned null"));
+          },
+          type === "jpg" ? "image/jpeg" : type === "jpeg" ? "image/jpeg" : "image/png",
+          jpegQuality
+        );
+      } catch (err) {
+        reject(err);
+      }
+    };
+
+    img.onerror = (e) => {
+      reject(new Error("Failed to load SVG image for conversion: " + e));
+    };
+
+    const svgDataUrl = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgText);
+    img.src = svgDataUrl;
+  });
+};
+
+const onDownloadClick = async () => {
+  try {
+    // Ensure any pending update was applied — calling update with empty object
+    // forces a re-render in case some state changed very shortly before click.
+    try { qrCode.update({}); } catch (e) { /* ignore if not needed */ }
+
+    // Get authoritative SVG
+    const svgBlob = await qrCode.getRawData("svg");
+    const svgText = await svgBlob.text();
+
+    if (fileExt === "svg") {
+      downloadBlob(new Blob([svgText], { type: "image/svg+xml;charset=utf-8" }), `qr.svg`);
+      return;
+    }
+
+    // If user wants PNG or JPG, convert the SVG -> raster on a canvas
+    const targetType = (fileExt === "jpg" || fileExt === "jpeg") ? "jpeg" : "png";
+    // Use your current width/height state so the exported raster matches the preview:
+    const w = Number(width) || 300;
+    const h = Number(height) || 300;
+
+    const rasterBlob = await svgBlobToPngOrJpeg(svgText, w, h, targetType, 0.92);
+    downloadBlob(rasterBlob, `qr.${fileExt}`);
+  } catch (err) {
+    console.error("Download failed (final):", err);
+    // final fallback to library download
+    try { qrCode.download({ extension: fileExt }); } catch (e) { console.error("library fallback failed", e); }
   }
+};
+
 
   return (
     <BrowserRouter>
