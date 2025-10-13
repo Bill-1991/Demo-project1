@@ -19,6 +19,7 @@ body{
   min-height: 100vh;
   align-items: flex-start !important;
   background-color: white;
+  color-scheme: light !important;
 }
 
 .App input,
