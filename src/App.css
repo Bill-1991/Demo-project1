@@ -6,6 +6,8 @@
 body{
   display: flex;
   justify-content: center;
+  background-color: white !important;
+  color-scheme: light !important;
 }
 
 .App {
