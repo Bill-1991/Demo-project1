@@ -24,7 +24,7 @@
 .siteUrl input {
     border-radius: 2%;
     border-color: black;
-    background-color: inherit;
+    background-color: white !important;
     border-width: 2px;
     font-size: 14px;
     font-weight: 700;
