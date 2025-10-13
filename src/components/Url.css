@@ -22,6 +22,7 @@
 
 .url input,
 .siteUrl input {
+    color-scheme: light !important;
     border-radius: 2%;
     border-color: black;
     background-color: white !important;

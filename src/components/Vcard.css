@@ -35,6 +35,7 @@
 .workTel input,
 .org input,
 .vCardPrev input{
+  color-scheme: light !important;
   border-radius: 2%;
   border-color: black;
   background-color: white !important;
