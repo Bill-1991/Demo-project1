@@ -25,6 +25,7 @@
 .main div input{
     height: 2rem;
     align-self: center;
+    background-color: white !important;
   }
 
 .dots,
@@ -60,6 +61,7 @@
 .imgOptions div input,
 .qrOptions div input{
   justify-self: flex-start !important;
+  background-color: white !important;
   height: 30px;
   align-self: center;
 }
@@ -70,6 +72,7 @@
 .qrOptions div select {
   height: 2rem;
   align-self: center;
+  background-color: white !important;
 }
 
 .dotsColorType,
@@ -84,6 +87,7 @@
 .colorTypeInputs {
   display: grid;
   grid-template-columns: 30% 70%;
+  background-color: white !important;
 }
 
 .colorTypeInputs div {
@@ -104,6 +108,7 @@
 .cornersDots-color input,
 .back-color input {
   justify-self: flex-start !important;
+  background-color: white !important;
 }
 
 .dots-color input,
@@ -111,6 +116,7 @@
 .cornersDots-color input,
 .back-color input {
   justify-self: center;
+  background-color: white !important;
 }
 
 .dotsGradient,
@@ -157,6 +163,7 @@
 .cornersDotsGradientColors input, 
 .backGradientColors input {
   align-self: center;
+  background-color: white !important;
 }
 
 .dotsGradientRotation,
@@ -174,4 +181,5 @@
   height: 20px;
   width: fit-content;
   align-self: center;
+  background-color: white !important;
 }
