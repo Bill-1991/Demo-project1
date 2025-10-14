@@ -25,7 +25,7 @@ const Vcard = ({ vCardUrl, firstName, firstNameChange, lastName, lastNameChange,
             <Form.Control type="text" onChange={lastNameChange} value={lastName} placeholder={edit && curTable === 'vcards' ? obj.lastName : "Last name"} />
           </Form.Group>
           <Form.Group className='org'>
-            <p>Organizattion: </p>
+            <p>Organization: </p>
             <Form.Control type="text" onChange={orgChange} value={org} placeholder={edit && curTable === 'vcards' ? obj.title : "Organization"} />
           </Form.Group>
           <Form.Group className='title'>
@@ -46,11 +46,11 @@ const Vcard = ({ vCardUrl, firstName, firstNameChange, lastName, lastNameChange,
           </Form.Group>
           <Form.Group className='tel'>
             <p>Phone number: </p>
-            <Form.Control type="number" onChange={telChange} value={tel} placeholder={ edit && curTable === 'vcards' ? obj.phone : "Only numbers format: 6900000000" } />
+            <Form.Control type="tel" onChange={telChange} value={tel} placeholder={ edit && curTable === 'vcards' ? obj.phone : "Only numbers format: 6900000000" } />
           </Form.Group>
           <Form.Group className='workTel'>
             <p>Work Phone number: </p>
-            <Form.Control type="number" onChange={secondTelChange} value={secondTel} placeholder={ edit && curTable === 'vcards' ? obj.phone : "Only numbers format: 6900000000 / 2100000000" } />
+            <Form.Control type="tel" onChange={secondTelChange} value={secondTel} placeholder={ edit && curTable === 'vcards' ? obj.phone : "Only numbers format: 6900000000 / 2100000000" } />
           </Form.Group>
           <Form.Group className='notes'>
             <p>Notes: </p>
